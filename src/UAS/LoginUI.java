@@ -49,6 +49,11 @@ public class LoginUI extends javax.swing.JFrame {
 
         loginBtn.setBackground(new java.awt.Color(255, 51, 51));
         loginBtn.setText("LOGIN");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
 
         registerBtn.setBackground(new java.awt.Color(51, 153, 255));
         registerBtn.setText("REGISTER");
@@ -133,6 +138,10 @@ public class LoginUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new RegistrationUI().setVisible(true);
     }//GEN-LAST:event_registerBtnActionPerformed
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:        
+    }//GEN-LAST:event_loginBtnActionPerformed
 
     /**
      * @param args the command line arguments

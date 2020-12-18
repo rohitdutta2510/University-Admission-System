@@ -28,7 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane3" min="-2" pref="594" max="-2" attributes="0"/>
+          <Component id="jScrollPane3" min="-2" pref="588" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -81,7 +81,7 @@
                                                   <Component id="emailTextField" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="phnNoTextField" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="aadharNumberTextField" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="guardianTextField" max="32767" attributes="0"/>
+                                                  <Component id="guardianPhnTextField" max="32767" attributes="0"/>
                                                   <Component id="guardianEmailTextField" pref="156" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -211,7 +211,7 @@
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="guardianTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="guardianPhnTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -442,9 +442,9 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailTextFieldActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="guardianTextField">
+            <Component class="javax.swing.JTextField" name="guardianPhnTextField">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardianTextFieldActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardianPhnTextFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="guardianEmailTextField">

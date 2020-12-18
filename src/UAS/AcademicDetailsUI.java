@@ -5,17 +5,31 @@
  */
 package UAS;
 
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author THUNDER
  */
 public class AcademicDetailsUI extends javax.swing.JFrame {
 
+    private FileOutputStream fos;
+    private DataOutputStream dos;
     /**
      * Creates new form AcademicDetailsUI
      */
     public AcademicDetailsUI() {
         initComponents();
+        
+        try {
+            fos = new FileOutputStream("Student Academics Details.txt");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AcademicDetailsUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dos = new DataOutputStream(fos);
+        
     }
 
     /**
@@ -37,7 +51,7 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         class10School = new javax.swing.JTextField();
         class10Marks = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        class10Boards = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         class12School = new javax.swing.JTextField();
@@ -48,10 +62,6 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
         subject1MarksObtained = new javax.swing.JTextField();
         subject2MarksObtained = new javax.swing.JTextField();
         subject3MarksObtained = new javax.swing.JTextField();
@@ -60,7 +70,11 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
         subject2TotalMarks = new javax.swing.JTextField();
         subject3TotalMarks = new javax.swing.JTextField();
         subject4TotalMarks = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        submitBtn = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
@@ -95,16 +109,29 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
 
         jLabel14.setText("Total Marks");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        subject1TotalMarks.setColumns(5);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        subject2TotalMarks.setColumns(5);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        subject3TotalMarks.setColumns(5);
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        subject4TotalMarks.setColumns(5);
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setText("Submit");
+        submitBtn.setBackground(new java.awt.Color(255, 51, 51));
+        submitBtn.setText("Submit");
+        submitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Physics");
+
+        jLabel16.setText("Chemistry");
+
+        jLabel17.setText("Mathematics");
+
+        jLabel18.setText("English");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,7 +154,7 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(class10School)
                             .addComponent(class10Marks)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(class10Boards, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel8)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
@@ -141,17 +168,15 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
                                 .addComponent(class12Marks)
                                 .addComponent(class12Boards, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
+                            .addGap(30, 30, 30)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(16, 16, 16)
-                                    .addComponent(jLabel12))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(51, 51, 51)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel15))
+                                .addComponent(jLabel16)
+                                .addComponent(jLabel17)
+                                .addComponent(jLabel18))
+                            .addGap(61, 61, 61)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                                 .addComponent(subject1MarksObtained)
@@ -175,8 +200,8 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
                                 .addComponent(subject4TotalMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(249, 249, 249)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(160, Short.MAX_VALUE))
+                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +225,7 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(class10Boards, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
@@ -222,31 +247,88 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
                     .addComponent(jLabel14))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(subject1MarksObtained, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(subject1TotalMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(subject1TotalMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(subject2MarksObtained, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(subject2TotalMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(subject2TotalMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(subject3MarksObtained, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(subject3TotalMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(subject3TotalMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(subject4MarksObtained, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(subject4TotalMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(subject4TotalMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
                 .addGap(30, 30, 30)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    private void storeData(){
+        String rank = examRankTextField.getText();
+        String class10Sc = class10School.getText();
+        String marks10 = class10Marks.getText();
+        String boards10 = class10Boards.getText();
+        
+        String class12Sc = class12School.getText();
+        String marks12 = class12Marks.getText();
+        String boards12 = class12Boards.getText();
+        
+        String physics = subject1MarksObtained.getText();
+        String physicsTotal = subject1TotalMarks.getText();
+        
+        String chemistry = subject2MarksObtained.getText();
+        String chemistryTotal = subject2TotalMarks.getText();
+        
+        String math = subject3MarksObtained.getText();
+        String mathTotal = subject3TotalMarks.getText();
+        
+        String eng = subject4MarksObtained.getText();
+        String engTotal = subject4TotalMarks.getText();
+        
+               
+        String data = rank + ", " +
+                class10Sc + ", " +
+                marks10 + ", " +
+                boards10 + ", " +
+                class12Sc + ", " +
+                marks12 + ", " +
+                boards12 + ", " +
+                physics + ", " +
+                physicsTotal + ", " +
+                chemistry + ", " +
+                chemistryTotal + ", " +
+                math + ", " +
+                mathTotal + ", " +
+                eng + ", " +
+                engTotal + "\n";
+        
+        System.out.println(data);      
+
+        try {               
+            dos.writeUTF(data);
+        } catch (IOException ex) {
+            Logger.getLogger(AcademicDetailsUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }    
+    
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+        // TODO add your handling code here:
+        this.storeData();
+    }//GEN-LAST:event_submitBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,23 +366,23 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField class10Boards;
     private javax.swing.JTextField class10Marks;
     private javax.swing.JTextField class10School;
     private javax.swing.JTextField class12Boards;
     private javax.swing.JTextField class12Marks;
     private javax.swing.JTextField class12School;
     private javax.swing.JTextField examRankTextField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -309,7 +391,6 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField subject1MarksObtained;
     private javax.swing.JTextField subject1TotalMarks;
     private javax.swing.JTextField subject2MarksObtained;
@@ -318,5 +399,6 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
     private javax.swing.JTextField subject3TotalMarks;
     private javax.swing.JTextField subject4MarksObtained;
     private javax.swing.JTextField subject4TotalMarks;
+    private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables
 }
