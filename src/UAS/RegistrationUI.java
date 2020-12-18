@@ -36,10 +36,10 @@ public class RegistrationUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
         emailIdTextField = new javax.swing.JTextField();
-        passwordTextField = new javax.swing.JTextField();
-        confirmPasswordTextField = new javax.swing.JTextField();
         confirmBtn = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
+        passwordField = new javax.swing.JPasswordField();
+        confirmPasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -101,10 +101,10 @@ public class RegistrationUI extends javax.swing.JFrame {
                                         .addGap(40, 40, 40)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(applicationNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(emailIdTextField)
+                                    .addComponent(emailIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                                     .addComponent(nameTextField)
-                                    .addComponent(passwordTextField)
-                                    .addComponent(confirmPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(passwordField)
+                                    .addComponent(confirmPasswordField))))
                         .addGap(84, 84, 84))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -133,11 +133,11 @@ public class RegistrationUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(confirmPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -190,7 +190,7 @@ public class RegistrationUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel applicationNumberLabel;
     private javax.swing.JButton confirmBtn;
-    private javax.swing.JTextField confirmPasswordTextField;
+    private javax.swing.JPasswordField confirmPasswordField;
     private javax.swing.JTextField emailIdTextField;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
@@ -200,6 +200,6 @@ public class RegistrationUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JTextField passwordTextField;
+    private javax.swing.JPasswordField passwordField;
     // End of variables declaration//GEN-END:variables
 }
