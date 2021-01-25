@@ -47,7 +47,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         String gemail = guardianEmailTextField.getText();
         String pDisabled = physicallyDisabledCombBox.getSelectedItem().toString();
         
-        if (name.isEmpty() && dob.isEmpty() && fName.isEmpty() && mName.isEmpty() && presentAddress.isEmpty() && permanentAddress.isEmpty() && aadharNo.isEmpty() && phnNo.isEmpty() && email.isEmpty() && gPhnNo.isEmpty() && gemail.isEmpty() && pDisabled.isEmpty()) {
+        if (name.isEmpty() && dob.isEmpty() && fName.isEmpty() && mName.isEmpty() && presentAddress.isEmpty() && permanentAddress.isEmpty() && aadharNo.isEmpty() && phnNo.isEmpty() && email.isEmpty() && gPhnNo.isEmpty() && gemail.isEmpty()) {
               System.out.print("Empty Fields Present");
         }else{
             if(jCheckBox1.isEnabled()){
@@ -120,6 +120,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         guardianEmailTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UpdateProfile-Samiruddin Thunder-45");
 
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane3.setAutoscrolls(true);

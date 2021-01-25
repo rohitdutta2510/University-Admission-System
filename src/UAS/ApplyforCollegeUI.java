@@ -62,6 +62,7 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         jCheckBox9 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Apply For College-Rohit Dutta-50");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Apply for Colleges");
