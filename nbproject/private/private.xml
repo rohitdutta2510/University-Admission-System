@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Works/Software%20Engg/CODE/University-Admission-System/src/UAS/StudentDetailsUI.java</file>
-            <file>file:/E:/Works/Software%20Engg/CODE/University-Admission-System/src/UAS/StudentMain.java</file>
-            <file>file:/E:/Works/Software%20Engg/CODE/University-Admission-System/src/UAS/AcademicDetailsUI.java</file>
-            <file>file:/E:/Works/Software%20Engg/CODE/University-Admission-System/src/UAS/ApplyforCollegeUI.java</file>
+            <file>file:/E:/Works/Software%20Engg/CODE/University-Admission-System/data.txt</file>
+            <file>file:/E:/Works/Software%20Engg/CODE/University-Admission-System/src/StudentMain.java</file>
+            <file>file:/E:/Works/Software%20Engg/CODE/University-Admission-System/src/UAS/utils/CollegeCourseInfo.java</file>
+            <file>file:/E:/Works/Software%20Engg/CODE/University-Admission-System/src/UAS/utils/CollegeManager.java</file>
         </group>
     </open-files>
 </project-private>
