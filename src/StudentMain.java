@@ -15,7 +15,7 @@ import UAS.utils.CollegeManager;
 import java.util.ArrayList;
 public class StudentMain {
     public static void main(String[] args) {
-       CollegeManager mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\data.txt");
+       CollegeManager mgr = new CollegeManager("F:\\Projects\\University-Admission-System\\data.txt");
        ArrayList<CollegeCourseInfo> rec = mgr.recommendCollegeCourse(2300);
         for (CollegeCourseInfo collegeCourseInfo : rec) {
             System.out.println("College Name: " + collegeCourseInfo.collegeName + ", Course Name: " + collegeCourseInfo.courseName);
