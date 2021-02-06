@@ -1,7 +1,6 @@
 package UAS.utils;
 
 
-
 public class StudentAccountInfo {
     public String name;
     public String emailID;
