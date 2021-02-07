@@ -1,8 +1,10 @@
 package UAS.utils;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -50,4 +52,22 @@ public class CollegeManager {
         return recommendations;
     }
     
+    public void applyForCollege(StudentChoiceDetails choiceDetails){
+        String filepath = "E:\\Works\\Software Engg\\CODE\\University-Admission-System\\studentChoiceDetails.txt";
+        try {
+            FileWriter fw = new FileWriter(filepath);
+            BufferedWriter bw = new BufferedWriter(fw);
+            String data = choiceDetails.appNo + ", ";
+            for (CollegeCourse choice : choiceDetails.choices) {
+                data = data + choice.cllgName + ", " + choice.courseName + ", " + choice.seatCount + ", ";
+            }                      
+            data = data.substring(0, data.length()-2);
+            data = data + "\n";
+            bw.write(data);
+            bw.close();
+            fw.close();            
+        } catch (IOException ex) {
+            Logger.getLogger(CollegeManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
 }
