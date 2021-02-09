@@ -317,7 +317,7 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
         System.out.println(data);      
 
         try {               
-            dos.writeUTF(data);
+            dos.writeUTF(data);            
         } catch (IOException ex) {
             Logger.getLogger(AcademicDetailsUI.class.getName()).log(Level.SEVERE, null, ex);
         }

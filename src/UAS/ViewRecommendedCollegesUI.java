@@ -12,11 +12,24 @@ package UAS;
  */
 public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
 
+    private int rank;    
     /** Creates new form ViewRecommendedCollegesUI */
     public ViewRecommendedCollegesUI() {
+        //CollegeManager
+        //rank = this.rank
+        //mgr.recommendCollege(rank) -> ArrayList
+        
+        //take the array list and show them in ComboBox        
+        
+        
         initComponents();
     }
 
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+    
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
