@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 package UAS;
+import UAS.utils.CollegeCourse;
 import UAS.utils.CollegeCourseInfo;
 import UAS.utils.CollegeManager;
-import java.io.*;
-import java.io.File;  // Import the File class
-import java.io.IOException;  // Import the IOException class to handle errors
+import UAS.utils.StudentChoiceDetails;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -21,8 +21,10 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
     /**
      * Creates new form ApplyforCollegeUI
      */
+    CollegeManager mgr;
+    
     public ApplyforCollegeUI() {
-        CollegeManager mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\data.txt");
+        mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\data.txt");
         ArrayList<CollegeCourseInfo> collegeCourseInfos = mgr.getCollegeCourseInfos();
 
         String[] colleges = new String[collegeCourseInfos.size()];
@@ -30,11 +32,34 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         
         for (int i = 0; i < collegeCourseInfos.size(); i++) {
             colleges[i] = collegeCourseInfos.get(i).collegeName;
-            courses[i] = collegeCourseInfos.get(i).collegeName;
-        }  
+            courses[i] = collegeCourseInfos.get(i).courseName;
+        }        
+        
         initComponents();
-    }
-
+        
+        
+        college1ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(colleges));
+        college2ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(colleges));
+        college3ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(colleges));
+        college4ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(colleges));
+        college5ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(colleges));
+        college6ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(colleges));
+        college7ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(colleges));
+        college8ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(colleges));
+        
+        
+        
+        stream1ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));
+        stream2ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));
+        stream3ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));
+        stream4ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));
+        stream5ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));
+        stream6ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));
+        stream7ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));
+        stream8ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));       
+        
+    }   
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,7 +90,7 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         college8ComboBox = new javax.swing.JComboBox<>();
         stream8ComboBox = new javax.swing.JComboBox<>();
         applyBtn = new javax.swing.JButton();
-        jCheckBox9 = new javax.swing.JCheckBox();
+        checkBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Apply For College-Rohit Dutta-50");
@@ -117,7 +142,7 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox9.setText("I confirm my choices & will be responsible for any discrepancy in choice filling");
+        checkBox.setText("I confirm my choices & will be responsible for any discrepancy in choice filling");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,14 +150,11 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCheckBox9)
+                .addComponent(checkBox)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(college4ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(college5ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(college6ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,7 +162,11 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
                     .addComponent(college8ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(college1ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(college2ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(college3ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(college3ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 299, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(stream1ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,7 +230,7 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
                     .addComponent(college8ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(stream8ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addComponent(jCheckBox9)
+                .addComponent(checkBox)
                 .addGap(18, 18, 18)
                 .addComponent(applyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -214,46 +240,43 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void applyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyBtnActionPerformed
-        // TODO add your handling code here:         
+        // TODO add your handling code here:       
+        this.apply();
     }//GEN-LAST:event_applyBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ApplyforCollegeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ApplyforCollegeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ApplyforCollegeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ApplyforCollegeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ApplyforCollegeUI().setVisible(true);
-            }
-        });
-    }
+    private void apply() {
+        ArrayList<CollegeCourse> choices = new ArrayList<CollegeCourse>();     
+        CollegeCourse choice1 = new CollegeCourse(this.college1ComboBox.getSelectedItem().toString(), this.stream1ComboBox.getSelectedItem().toString());        
+        CollegeCourse choice2 = new CollegeCourse(this.college2ComboBox.getSelectedItem().toString(), this.stream2ComboBox.getSelectedItem().toString());        
+        CollegeCourse choice3 = new CollegeCourse(this.college3ComboBox.getSelectedItem().toString(), this.stream3ComboBox.getSelectedItem().toString());        
+        CollegeCourse choice4 = new CollegeCourse(this.college4ComboBox.getSelectedItem().toString(), this.stream4ComboBox.getSelectedItem().toString());        
+        CollegeCourse choice5 = new CollegeCourse(this.college5ComboBox.getSelectedItem().toString(), this.stream5ComboBox.getSelectedItem().toString());        
+        CollegeCourse choice6 = new CollegeCourse(this.college6ComboBox.getSelectedItem().toString(), this.stream6ComboBox.getSelectedItem().toString());        
+        CollegeCourse choice7 = new CollegeCourse(this.college7ComboBox.getSelectedItem().toString(), this.stream7ComboBox.getSelectedItem().toString());        
+        CollegeCourse choice8 = new CollegeCourse(this.college8ComboBox.getSelectedItem().toString(), this.stream8ComboBox.getSelectedItem().toString());    
+        choices.add(choice1);
+        choices.add(choice2);
+        choices.add(choice3);
+        choices.add(choice4);
+        choices.add(choice5);
+        choices.add(choice6);        
+        choices.add(choice7);  
+        choices.add(choice8);        
+        
+        StudentChoiceDetails studentChoiceDetails = new StudentChoiceDetails(1224903435, choices);
+        if (checkBox.isSelected()) {
+            mgr.applyForCollege(studentChoiceDetails);
+            JOptionPane.showMessageDialog(null, "Choices are selected", "Successful!", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            //JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Check the box", "Error!", JOptionPane.ERROR_MESSAGE);
+        }        
+    }   
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton applyBtn;
+    private javax.swing.JCheckBox checkBox;
     private javax.swing.JComboBox<String> college1ComboBox;
     private javax.swing.JComboBox<String> college2ComboBox;
     private javax.swing.JComboBox<String> college3ComboBox;
@@ -262,7 +285,6 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> college6ComboBox;
     private javax.swing.JComboBox<String> college7ComboBox;
     private javax.swing.JComboBox<String> college8ComboBox;
-    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

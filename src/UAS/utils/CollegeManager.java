@@ -26,6 +26,7 @@ public class CollegeManager {
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while(line!=null){
+                //System.out.println(line);
                 String[] row = line.split(",");
                 CollegeCourseInfo data = new CollegeCourseInfo(Integer.parseInt(row[0]), Integer.parseInt(row[1]), row[2], row[3], Integer.parseInt(row[4]), Integer.parseInt(row[5]), Integer.parseInt(row[6]));
                 this.collegeCourseInfos.add(data);
@@ -55,11 +56,11 @@ public class CollegeManager {
     public void applyForCollege(StudentChoiceDetails choiceDetails){
         String filepath = "E:\\Works\\Software Engg\\CODE\\University-Admission-System\\studentChoiceDetails.txt";
         try {
-            FileWriter fw = new FileWriter(filepath);
+            FileWriter fw = new FileWriter(filepath, true);
             BufferedWriter bw = new BufferedWriter(fw);
             String data = choiceDetails.appNo + ", ";
             for (CollegeCourse choice : choiceDetails.choices) {
-                data = data + choice.cllgName + ", " + choice.courseName + ", " + choice.seatCount + ", ";
+                data = data + choice.cllgName + ", " + choice.courseName + ", ";
             }                      
             data = data.substring(0, data.length()-2);
             data = data + "\n";
