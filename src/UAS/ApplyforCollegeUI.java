@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 package UAS;
+import UAS.utils.CollegeCourseInfo;
+import UAS.utils.CollegeManager;
 import java.io.*;
 import java.io.File;  // Import the File class
 import java.io.IOException;  // Import the IOException class to handle errors
+import java.util.ArrayList;
 
 
 /**
@@ -19,9 +22,20 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
      * Creates new form ApplyforCollegeUI
      */
     public ApplyforCollegeUI() {
+        CollegeManager mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\data.txt");
+        ArrayList<CollegeCourseInfo> collegeCourseInfos = mgr.getCollegeCourseInfos();
+
+        String[] colleges = new String[collegeCourseInfos.size()];
+        String[] courses = new String[collegeCourseInfos.size()];
+        
+        for (int i = 0; i < collegeCourseInfos.size(); i++) {
+            colleges[i] = collegeCourseInfos.get(i).collegeName;
+            courses[i] = collegeCourseInfos.get(i).collegeName;
+        }  
         initComponents();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,31 +48,23 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jComboBox8 = new javax.swing.JComboBox<>();
-        jComboBox9 = new javax.swing.JComboBox<>();
-        jComboBox10 = new javax.swing.JComboBox<>();
-        jComboBox11 = new javax.swing.JComboBox<>();
-        jComboBox12 = new javax.swing.JComboBox<>();
-        jComboBox13 = new javax.swing.JComboBox<>();
-        jComboBox14 = new javax.swing.JComboBox<>();
-        jComboBox15 = new javax.swing.JComboBox<>();
-        jComboBox16 = new javax.swing.JComboBox<>();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        college1ComboBox = new javax.swing.JComboBox<>();
+        stream1ComboBox = new javax.swing.JComboBox<>();
+        college2ComboBox = new javax.swing.JComboBox<>();
+        stream2ComboBox = new javax.swing.JComboBox<>();
+        college3ComboBox = new javax.swing.JComboBox<>();
+        stream3ComboBox = new javax.swing.JComboBox<>();
+        college4ComboBox = new javax.swing.JComboBox<>();
+        stream4ComboBox = new javax.swing.JComboBox<>();
+        college5ComboBox = new javax.swing.JComboBox<>();
+        stream5ComboBox = new javax.swing.JComboBox<>();
+        college6ComboBox = new javax.swing.JComboBox<>();
+        stream6ComboBox = new javax.swing.JComboBox<>();
+        college7ComboBox = new javax.swing.JComboBox<>();
+        stream7ComboBox = new javax.swing.JComboBox<>();
+        college8ComboBox = new javax.swing.JComboBox<>();
+        stream8ComboBox = new javax.swing.JComboBox<>();
+        applyBtn = new javax.swing.JButton();
         jCheckBox9 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,43 +77,43 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
 
         jLabel3.setText("Stream");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select College ----", "Jadavpur University", "Kalyani Govt. Engineering College", "Calcutta University", "Heritage Institute of Technology", "Institute of Engineering & Management, Kolkata", "Techno India", "Jalpaiguri Govt. College", "Academy of Technology" }));
+        college1ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select Stream ----", "Computer Science & Engineering", "Electronics & Communication Engineering", "Information Technology", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics Engineering", "Chemical Engineering", " " }));
+        stream1ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select College ----", "Jadavpur University", "Kalyani Govt. Engineering College", "Calcutta University", "Heritage Institute of Technology", "Institute of Engineering & Management, Kolkata", "Techno India", "Jalpaiguri Govt. College", "Academy of Technology" }));
+        college2ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select Stream ----", "Computer Science & Engineering", "Electronics & Communication Engineering", "Information Technology", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics Engineering", "Chemical Engineering", " " }));
+        stream2ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select College ----", "Jadavpur University", "Kalyani Govt. Engineering College", "Calcutta University", "Heritage Institute of Technology", "Institute of Engineering & Management, Kolkata", "Techno India", "Jalpaiguri Govt. College", "Academy of Technology" }));
+        college3ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select Stream ----", "Computer Science & Engineering", "Electronics & Communication Engineering", "Information Technology", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics Engineering", "Chemical Engineering", " " }));
+        stream3ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select College ----", "Jadavpur University", "Kalyani Govt. Engineering College", "Calcutta University", "Heritage Institute of Technology", "Institute of Engineering & Management, Kolkata", "Techno India", "Jalpaiguri Govt. College", "Academy of Technology" }));
+        college4ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select Stream ----", "Computer Science & Engineering", "Electronics & Communication Engineering", "Information Technology", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics Engineering", "Chemical Engineering", " " }));
+        stream4ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select College ----", "Jadavpur University", "Kalyani Govt. Engineering College", "Calcutta University", "Heritage Institute of Technology", "Institute of Engineering & Management, Kolkata", "Techno India", "Jalpaiguri Govt. College", "Academy of Technology" }));
+        college5ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select Stream ----", "Computer Science & Engineering", "Electronics & Communication Engineering", "Information Technology", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics Engineering", "Chemical Engineering", " " }));
+        stream5ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select College ----", "Jadavpur University", "Kalyani Govt. Engineering College", "Calcutta University", "Heritage Institute of Technology", "Institute of Engineering & Management, Kolkata", "Techno India", "Jalpaiguri Govt. College", "Academy of Technology" }));
+        college6ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select Stream ----", "Computer Science & Engineering", "Electronics & Communication Engineering", "Information Technology", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics Engineering", "Chemical Engineering", " " }));
+        stream6ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select College ----", "Jadavpur University", "Kalyani Govt. Engineering College", "Calcutta University", "Heritage Institute of Technology", "Institute of Engineering & Management, Kolkata", "Techno India", "Jalpaiguri Govt. College", "Academy of Technology" }));
+        college7ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select Stream ----", "Computer Science & Engineering", "Electronics & Communication Engineering", "Information Technology", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics Engineering", "Chemical Engineering", " " }));
+        stream7ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select College ----", "Jadavpur University", "Kalyani Govt. Engineering College", "Calcutta University", "Heritage Institute of Technology", "Institute of Engineering & Management, Kolkata", "Techno India", "Jalpaiguri Govt. College", "Academy of Technology" }));
+        college8ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Select Stream ----", "Computer Science & Engineering", "Electronics & Communication Engineering", "Information Technology", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics Engineering", "Chemical Engineering", " " }));
+        stream8ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selected Item----" }));
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setText("Apply");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        applyBtn.setBackground(new java.awt.Color(255, 51, 51));
+        applyBtn.setText("Apply");
+        applyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                applyBtnActionPerformed(evt);
             }
         });
 
@@ -118,55 +124,43 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jCheckBox9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(college4ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(college5ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(college6ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(college7ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(college8ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(college1ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(college2ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(college3ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 299, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCheckBox9)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox2)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox4)
-                            .addComponent(jCheckBox5)
-                            .addComponent(jCheckBox6)
-                            .addComponent(jCheckBox7)
-                            .addComponent(jCheckBox8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox11, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox13, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox15, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(149, 149, 149))))
+                    .addComponent(stream1ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream2ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream3ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream4ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream5ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream6ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream7ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream8ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(70, 70, 70))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(266, 266, 266))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(applyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(291, 291, 291))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,117 +172,50 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(college1ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream1ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(college2ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream2ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(college3ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream3ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(college4ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream4ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(college5ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream5ComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(college6ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream6ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(college7ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream7ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox6)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox8, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(college8ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stream8ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jCheckBox9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(applyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        Boolean[] cb = new Boolean[9];
-        cb[0] = false;
-        cb[1] = jCheckBox1.isSelected();
-        cb[2] = jCheckBox2.isSelected();
-        cb[3] = jCheckBox3.isSelected();
-        cb[4] = jCheckBox4.isSelected();
-        cb[5] = jCheckBox5.isSelected();
-        cb[6] = jCheckBox6.isSelected();
-        cb[7] = jCheckBox7.isSelected();
-        cb[8] = jCheckBox8.isSelected();
-        
-        String[] college = new String[9];
-        String[] stream = new String[9];
-        
-        college[0]="XXXX";
-        stream[0]="XXXX";
-        
-        college[1] = jComboBox1.getSelectedItem().toString();
-        stream[1] = jComboBox2.getSelectedItem().toString();
-        
-        college[2] = jComboBox3.getSelectedItem().toString();
-        stream[2] = jComboBox4.getSelectedItem().toString();
-        
-        college[3] = jComboBox5.getSelectedItem().toString();
-        stream[3] = jComboBox6.getSelectedItem().toString();
-        
-        college[4] = jComboBox7.getSelectedItem().toString();
-        stream[4] = jComboBox8.getSelectedItem().toString();
-        
-        college[5] = jComboBox9.getSelectedItem().toString();
-        stream[5] = jComboBox10.getSelectedItem().toString();
-        
-        college[6] = jComboBox11.getSelectedItem().toString();
-        stream[6] = jComboBox12.getSelectedItem().toString();
-        
-        college[7] = jComboBox13.getSelectedItem().toString();
-        stream[7] = jComboBox14.getSelectedItem().toString();
-        
-        college[8] = jComboBox15.getSelectedItem().toString();
-        stream[8] = jComboBox16.getSelectedItem().toString();
-        
-    
-        if(jCheckBox9.isSelected()){
-            for(int i=1; i<=8; i++){
-                if(cb[i] == true){
-                    System.out.println(college[i] + ", " + stream[i] + "\n");
-                }
-            }
-        }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void applyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyBtnActionPerformed
+        // TODO add your handling code here:         
+    }//GEN-LAST:event_applyBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,34 +253,26 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JButton applyBtn;
+    private javax.swing.JComboBox<String> college1ComboBox;
+    private javax.swing.JComboBox<String> college2ComboBox;
+    private javax.swing.JComboBox<String> college3ComboBox;
+    private javax.swing.JComboBox<String> college4ComboBox;
+    private javax.swing.JComboBox<String> college5ComboBox;
+    private javax.swing.JComboBox<String> college6ComboBox;
+    private javax.swing.JComboBox<String> college7ComboBox;
+    private javax.swing.JComboBox<String> college8ComboBox;
     private javax.swing.JCheckBox jCheckBox9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox11;
-    private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox13;
-    private javax.swing.JComboBox<String> jComboBox14;
-    private javax.swing.JComboBox<String> jComboBox15;
-    private javax.swing.JComboBox<String> jComboBox16;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JComboBox<String> stream1ComboBox;
+    private javax.swing.JComboBox<String> stream2ComboBox;
+    private javax.swing.JComboBox<String> stream3ComboBox;
+    private javax.swing.JComboBox<String> stream4ComboBox;
+    private javax.swing.JComboBox<String> stream5ComboBox;
+    private javax.swing.JComboBox<String> stream6ComboBox;
+    private javax.swing.JComboBox<String> stream7ComboBox;
+    private javax.swing.JComboBox<String> stream8ComboBox;
     // End of variables declaration//GEN-END:variables
 }
