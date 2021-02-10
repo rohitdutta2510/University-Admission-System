@@ -5,30 +5,24 @@
  */
 package UAS;
 
-import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import UAS.utils.StudentManager;
+import UAS.utils.StudentAcademicDetails;
+import UAS.utils.Subject;
 
-/**
- *
- * @author THUNDER
- */
 public class AcademicDetailsUI extends javax.swing.JFrame {
-
-    private FileOutputStream fos;
-    private DataOutputStream dos;
-    /**
-     * Creates new form AcademicDetailsUI
-     */
+    
+    private StudentManager smgr;
+    private StudentAcademicDetails sad;
+    private Subject[] sbList = new Subject[4];
+    
     public AcademicDetailsUI() {
         initComponents();
-        
-        try {
-            fos = new FileOutputStream("Student Academics Details.txt");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(AcademicDetailsUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        dos = new DataOutputStream(fos);
+        smgr = new StudentManager("F:\\Projects\\University-Admission-System\\");
+        sbList[0] = new Subject("Physics", "XX", "XX");
+        sbList[1] = new Subject("Chemistry", "XX", "XX");
+        sbList[2] = new Subject("Maths", "XX", "XX");
+        sbList[3] = new Subject("English", "XX", "XX");
         
     }
 
@@ -285,45 +279,34 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
         String marks12 = class12Marks.getText();
         String boards12 = class12Boards.getText();
         
-        String physics = subject1MarksObtained.getText();
-        String physicsTotal = subject1TotalMarks.getText();
+        sbList[0].obtMarks = subject1MarksObtained.getText();
+        sbList[0].totMarks = subject1TotalMarks.getText();
         
-        String chemistry = subject2MarksObtained.getText();
-        String chemistryTotal = subject2TotalMarks.getText();
+        sbList[1].obtMarks = subject2MarksObtained.getText();
+        sbList[1].totMarks = subject2TotalMarks.getText();
         
-        String math = subject3MarksObtained.getText();
-        String mathTotal = subject3TotalMarks.getText();
+        sbList[2].obtMarks = subject3MarksObtained.getText();
+        sbList[2].totMarks = subject3TotalMarks.getText();
         
-        String eng = subject4MarksObtained.getText();
-        String engTotal = subject4TotalMarks.getText();
+        sbList[3].obtMarks = subject4MarksObtained.getText();
+        sbList[3].totMarks = subject4TotalMarks.getText();
         
-               
-        String data = rank + ", " +
-                class10Sc + ", " +
-                marks10 + ", " +
-                boards10 + ", " +
-                class12Sc + ", " +
-                marks12 + ", " +
-                boards12 + ", " +
-                physics + ", " +
-                physicsTotal + ", " +
-                chemistry + ", " +
-                chemistryTotal + ", " +
-                math + ", " +
-                mathTotal + ", " +
-                eng + ", " +
-                engTotal + "\n";
         
-        System.out.println(data);      
+        if (rank.isBlank() && class10Sc.isBlank() && marks10.isBlank() && boards10.isBlank() &&
+                class12Sc.isBlank() && marks12.isBlank() && boards12.isBlank() && sbList[0].obtMarks.isBlank() &&
+                                                sbList[0].totMarks.isBlank() && sbList[1].obtMarks.isBlank() &&
+                                                sbList[1].totMarks.isBlank() && sbList[2].obtMarks.isBlank() &&
+                                                sbList[2].totMarks.isBlank()&& sbList[3].obtMarks.isBlank() &&
+                                                sbList[3].totMarks.isBlank()) {
+            JOptionPane.showMessageDialog(null, "All the fields are mandatory !!");
+        }else{
+            sad = new StudentAcademicDetails(rank, class10Sc, boards10, marks10, class12Sc, boards10, marks12, sbList);
+            smgr.updateAcademicDetails("application number", sad);
 
-        try {               
-            dos.writeUTF(data);            
-        } catch (IOException ex) {
-            Logger.getLogger(AcademicDetailsUI.class.getName()).log(Level.SEVERE, null, ex);
+            new ViewRecommendedCollegesUI().setVisible(true);
+            dispose();
+            
         }
-        
-        
-        
     }    
     
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
@@ -335,29 +318,6 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AcademicDetailsUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AcademicDetailsUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AcademicDetailsUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AcademicDetailsUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

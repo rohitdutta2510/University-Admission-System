@@ -11,11 +11,11 @@ public class StudentPersonalDetails {
     public String phone;
     public String guardianPhone;
     public String email;
-    public boolean phyDisabled;
+    public String phyDisabled;
 
     public StudentPersonalDetails(String DOB, String fatherName, String motherName, 
             String presentAddr, String permanentAddr, String aadhaarNo, String phone, 
-            String guardianPhone, String email, boolean phyDisabled) {
+            String guardianPhone, String email, String phyDisabled) {
         
         this.DOB = DOB;
         this.fatherName = fatherName;

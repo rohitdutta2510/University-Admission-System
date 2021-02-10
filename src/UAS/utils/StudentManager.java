@@ -3,7 +3,7 @@ package UAS.utils;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.FileNotFoundException;
+
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +25,7 @@ public class StudentManager {
     }*/
     public void updatePersonalDetails(String appno, String name, StudentPersonalDetails stud){
         try {
-         FileWriter fw = new FileWriter(this.filepath + "StudentPersonalDetails.txt");
+         FileWriter fw = new FileWriter(this.filepath + "StudentPersonalDetails.txt", true);
          BufferedWriter bw = new BufferedWriter(fw);
          bw.write(writeLinePers(appno, name, stud) + "\n");
          bw.close();
@@ -56,7 +56,7 @@ public class StudentManager {
     }
     
     public String writeLineAcad(String appno, StudentAcademicDetails student){
-    String det = String.join(",", student.genRank, student.catRank, student.school10,
+    String det = String.join(",", student.genRank, student.school10,
             student.board10, student.marksPercent10, student.school12,
             student.board12, student.marksPercent12, getSub(student.subjects));
     return det;

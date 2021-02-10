@@ -18,6 +18,6 @@ import UAS.*;
 
 public class StudentMain {
     public static void main(String[] args) {
-        new ViewRecommendedCollegesUI().setVisible(true);
+        new StudentDetailsUI().setVisible(true);
             }
 }
