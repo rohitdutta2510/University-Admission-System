@@ -6,13 +6,11 @@ This class to be used by the StudentChoiceDetails
 
 public class CollegeCourse {
     public String cllgName;
-    public String courseName;
-    public int seatCount;        
+    public String courseName;           
 
-    public CollegeCourse(String cllgName, String courseName, int seatCount) {
+    public CollegeCourse(String cllgName, String courseName) {
         this.cllgName = cllgName;
-        this.courseName = courseName;
-        this.seatCount = seatCount;
+        this.courseName = courseName;        
     }
     
 }

@@ -10,14 +10,10 @@
  * @author THUNDER
  */
 
-import UAS.utils.CollegeCourse;
-import UAS.utils.CollegeManager;
-import UAS.utils.StudentChoiceDetails;
-import java.util.ArrayList;
 import UAS.*;
 
 public class StudentMain {
     public static void main(String[] args) {
-        new ViewRecommendedCollegesUI().setVisible(true);
-            }
+        new ApplyforCollegeUI().setVisible(true);
+    }
 }
