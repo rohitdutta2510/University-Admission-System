@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class StudentAcademicDetails {
     public String genRank;
-    public String catRank;
     public String school10;
     public String board10;
     public String marksPercent10;
@@ -14,12 +13,11 @@ public class StudentAcademicDetails {
     public String marksPercent12;
     public ArrayList<Subject> subjects;
 
-    public StudentAcademicDetails(String genRank, String catRank, String school10, 
+    public StudentAcademicDetails(String genRank, String school10, 
             String board10, String marksPercent10, String school12, String board12, 
             String marksPercent12, Subject subList[]) {
         
         this.genRank = genRank;
-        this.catRank = catRank;
         this.school10 = school10;
         this.board10 = board10;
         this.marksPercent10 = marksPercent10;

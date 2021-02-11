@@ -5,35 +5,25 @@
  */
 package UAS;
 
-import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import UAS.utils.StudentManager;
+import UAS.utils.StudentPersonalDetails;
 
-/**
- *
- * @author seals
- */
+
 public class StudentDetailsUI extends javax.swing.JFrame {
     
-    private FileOutputStream fos;
-    private DataOutputStream dos;
+    private StudentManager smgr;
+    private StudentPersonalDetails spd;
 
-    /**
-     * Creates new form StudentDetailsUI
-     */
+    
     public StudentDetailsUI() {
         initComponents();      
-        
-        try {            
-            fos = new FileOutputStream("Student Personal Details.txt");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(StudentDetailsUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                
-        dos = new DataOutputStream(fos);        
+        smgr = new StudentManager("F:\\Projects\\University-Admission-System\\");
     }
+        
 
     private void storeData(){
+        String app = appNo.getText();
         String name = studentNameTextField.getText();
         String dob = dobTextField.getText();
         String fName = fatherNameTextField.getText();
@@ -47,29 +37,19 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         String gemail = guardianEmailTextField.getText();
         String pDisabled = physicallyDisabledCombBox.getSelectedItem().toString();
         
-        if (name.isEmpty() && dob.isEmpty() && fName.isEmpty() && mName.isEmpty() && presentAddress.isEmpty() && permanentAddress.isEmpty() && aadharNo.isEmpty() && phnNo.isEmpty() && email.isEmpty() && gPhnNo.isEmpty() && gemail.isEmpty()) {
-              System.out.print("Empty Fields Present");
+        
+        if (name.isEmpty() && dob.isEmpty() && fName.isEmpty() && mName.isEmpty() && presentAddress.isEmpty() 
+                && permanentAddress.isEmpty() && aadharNo.isEmpty() && phnNo.isEmpty() && email.isEmpty() && 
+                gPhnNo.isEmpty() && gemail.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All the fields are mandatory !!");
         }else{
-            if(jCheckBox1.isEnabled()){
-                String data = name + ", " +
-                        dob + ", " +
-                        fName + ", " +
-                        mName + ", " +
-                        presentAddress + ", " +
-                        permanentAddress + ", " +
-                        aadharNo + ", " +
-                        phnNo + ", " +
-                        email + ", " +
-                        gPhnNo + ", " +
-                        gemail + ", " +
-                        pDisabled + "\n";        
-                System.out.println(data);                     
-                try {
-                    dos.writeUTF(data);                    
-                    new AcademicDetailsUI().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(StudentDetailsUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            if(jCheckBox1.isSelected()){
+                spd = new StudentPersonalDetails(dob, fName, mName, presentAddress,
+                permanentAddress, aadharNo, phnNo, gPhnNo, email, pDisabled);
+                smgr.updatePersonalDetails(app, name, spd);
+                
+                new AcademicDetailsUI().setVisible(true);
+                dispose();
             }
         }
     }
@@ -96,7 +76,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         image = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        appNo = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -120,7 +100,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         guardianEmailTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("UpdateProfile-Samiruddin Thunder-45");
+        setTitle("UpdateProfile");
 
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane3.setAutoscrolls(true);
@@ -150,8 +130,8 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setText("Application Number:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel3.setText("35466121685");
+        appNo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        appNo.setText("35466121685");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setText("Name:");
@@ -182,11 +162,6 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         jLabel15.setText("Guardian's Email ID:");
 
         physicallyDisabledCombBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
-        physicallyDisabledCombBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                physicallyDisabledCombBoxActionPerformed(evt);
-            }
-        });
 
         jLabel16.setText("Physically Disabled:");
 
@@ -197,24 +172,6 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitBtnActionPerformed(evt);
-            }
-        });
-
-        aadharNumberTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aadharNumberTextFieldActionPerformed(evt);
-            }
-        });
-
-        emailTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextFieldActionPerformed(evt);
-            }
-        });
-
-        guardianPhnTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardianPhnTextFieldActionPerformed(evt);
             }
         });
 
@@ -275,9 +232,9 @@ public class StudentDetailsUI extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(12, 12, 12)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
+                                    .addComponent(appNo)
                                     .addComponent(studentNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(101, 101, 101)
@@ -299,7 +256,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(appNo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -371,33 +328,16 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void physicallyDisabledCombBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_physicallyDisabledCombBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_physicallyDisabledCombBoxActionPerformed
-
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
-        // TODO add your handling code here:
-        this.storeData(); 
-        
+        // TODO add your handling code here
+        this.storeData();
     }//GEN-LAST:event_submitBtnActionPerformed
-
-    private void aadharNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aadharNumberTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_aadharNumberTextFieldActionPerformed
-
-    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextFieldActionPerformed
-
-    private void guardianPhnTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardianPhnTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_guardianPhnTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -405,6 +345,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aadharNumberTextField;
+    private javax.swing.JLabel appNo;
     private javax.swing.JTextField dobTextField;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JTextField fatherNameTextField;
@@ -420,7 +361,6 @@ public class StudentDetailsUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
