@@ -7,6 +7,7 @@
 package UAS;
 import UAS.*;
 import UAS.utils.CollegeCourseInfo;
+import UAS.utils.CollegeCourse;
 import UAS.utils.CollegeManager;
 import java.util.ArrayList;
 
@@ -16,13 +17,16 @@ import java.util.ArrayList;
  */
 public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
 
-    private int rank;    
+    private int rank;
+    private String appNo;    
+
     /** Creates new form ViewRecommendedCollegesUI */
-    public ViewRecommendedCollegesUI() {
+    public ViewRecommendedCollegesUI(int rank,String appNo) {
         CollegeManager mgr = new CollegeManager("D:\\University Admission System\\University-Admission-System\\data.txt");
         //CollegeManager
-        rank = this.rank;
-        ArrayList<CollegeCourseInfo> rec = mgr.recommendCollegeCourse(4000);
+        this.rank = rank;
+        this.appNo = appNo;
+        ArrayList<CollegeCourseInfo> rec = mgr.recommendCollegeCourse(this.rank);
         ArrayList<String> college = new ArrayList<String>();
         ArrayList<String> stream = new ArrayList<String>();
         
@@ -63,7 +67,7 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        submitBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         college1 = new javax.swing.JComboBox<>();
         college2 = new javax.swing.JComboBox<>();
@@ -88,11 +92,11 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("View Recommended Colleges");
 
-        jButton1.setBackground(new java.awt.Color(236, 45, 25));
-        jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        submitBtn.setBackground(new java.awt.Color(236, 45, 25));
+        submitBtn.setText("Submit");
+        submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                submitBtnActionPerformed(evt);
             }
         });
 
@@ -166,7 +170,7 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
                         .add(jLabel2)
                         .add(177, 177, 177))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 91, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(submitBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 91, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(242, 242, 242))))
         );
         layout.setVerticalGroup(
@@ -201,17 +205,32 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(stream5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 104, Short.MAX_VALUE)
-                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(submitBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(56, 56, 56))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.submit();
+    }//GEN-LAST:event_submitBtnActionPerformed
   
+    private void submit(){
+        ArrayList<CollegeCourse> cc = new ArrayList<CollegeCourse>();
+        cc.add(new CollegeCourse(college1.getSelectedItem().toString(),stream1.getSelectedItem().toString()));
+        cc.add(new CollegeCourse(college2.getSelectedItem().toString(),stream2.getSelectedItem().toString()));
+        cc.add(new CollegeCourse(college3.getSelectedItem().toString(),stream3.getSelectedItem().toString()));
+        cc.add(new CollegeCourse(college4.getSelectedItem().toString(),stream4.getSelectedItem().toString()));
+        cc.add(new CollegeCourse(college5.getSelectedItem().toString(),stream5.getSelectedItem().toString()));
+       
+        for (CollegeCourse collegeCourse : cc) {
+            System.out.println("College Name: " + collegeCourse.cllgName + ", Course Name: " + collegeCourse.courseName);
+        }
+
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> college1;
@@ -219,7 +238,6 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> college3;
     private javax.swing.JComboBox<String> college4;
     private javax.swing.JComboBox<String> college5;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -229,6 +247,7 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> stream3;
     private javax.swing.JComboBox<String> stream4;
     private javax.swing.JComboBox<String> stream5;
+    private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables
 
 }
