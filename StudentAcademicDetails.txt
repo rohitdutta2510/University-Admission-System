@@ -1,1 +1,1 @@
-5000,SDawdwf,waefcwe,100,wef,waefcwe,100,Physics,100,100,Chemistry,100,100,Maths,100,100
+5000,SPS,FASDf,95,Wf,FASDf,59,Physics,100,100,Chemistry,100,100,Maths,10,10

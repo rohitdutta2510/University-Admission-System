@@ -38,18 +38,9 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
         String[] coll = college.toArray(new String[college.size()]);
         String[] str = stream.toArray(new String[stream.size()]);
         //take the array list and show them in ComboBox  
-        
+        rec1.setText(coll[0] + "-" + str[0]);
         initComponents();
-        college1.setModel(new javax.swing.DefaultComboBoxModel<>(coll));
-        college2.setModel(new javax.swing.DefaultComboBoxModel<>(coll));
-        college3.setModel(new javax.swing.DefaultComboBoxModel<>(coll));
-        college4.setModel(new javax.swing.DefaultComboBoxModel<>(coll));
-        college5.setModel(new javax.swing.DefaultComboBoxModel<>(coll));
-        stream1.setModel(new javax.swing.DefaultComboBoxModel<>(str));
-        stream2.setModel(new javax.swing.DefaultComboBoxModel<>(str));
-        stream3.setModel(new javax.swing.DefaultComboBoxModel<>(str));
-        stream4.setModel(new javax.swing.DefaultComboBoxModel<>(str));
-        stream5.setModel(new javax.swing.DefaultComboBoxModel<>(str));
+               
     }
 
     public void setRank(int rank) {
@@ -69,16 +60,10 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         submitBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        college1 = new javax.swing.JComboBox<>();
-        college2 = new javax.swing.JComboBox<>();
-        college3 = new javax.swing.JComboBox<>();
-        college5 = new javax.swing.JComboBox<>();
-        college4 = new javax.swing.JComboBox<>();
-        stream1 = new javax.swing.JComboBox<>();
-        stream2 = new javax.swing.JComboBox<>();
-        stream3 = new javax.swing.JComboBox<>();
-        stream5 = new javax.swing.JComboBox<>();
-        stream4 = new javax.swing.JComboBox<>();
+        rec1 = new javax.swing.JCheckBox();
+        rec2 = new javax.swing.JCheckBox();
+        rec4 = new javax.swing.JCheckBox();
+        rec3 = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -105,108 +90,61 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
         jLabel3.setText("Stream:");
         jLabel3.setPreferredSize(new java.awt.Dimension(40, 15));
 
-        college1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        college1.setToolTipText("");
+        rec1.setText("CollegeName - StreamName");
 
-        college2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        college2.setToolTipText("");
+        rec2.setText("CollegeName - StreamName");
 
-        college3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        college3.setToolTipText("");
+        rec4.setText("CollegeName - StreamName");
 
-        college5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        college5.setToolTipText("");
-
-        college4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        college4.setToolTipText("");
-
-        stream1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        stream1.setToolTipText("");
-
-        stream2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        stream2.setToolTipText("");
-
-        stream3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        stream3.setToolTipText("");
-
-        stream5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        stream5.setToolTipText("");
-
-        stream4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        stream4.setToolTipText("");
+        rec3.setText("CollegeName - StreamName");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(115, 115, 115)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(college1, 0, 98, Short.MAX_VALUE)
-                            .add(college2, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(college5, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .add(org.jdesktop.layout.GroupLayout.TRAILING, college3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 98, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, college4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 98, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(127, 127, 127)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(136, 136, 136))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, stream5, 0, 99, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, stream2, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, stream1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, stream3, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, stream4, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .add(87, 87, 87))))
+                .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(131, 131, 131))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(161, Short.MAX_VALUE)
+                .add(115, 161, Short.MAX_VALUE)
+                .add(jLabel2)
+                .add(177, 177, 177))
+            .add(layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jLabel2)
-                        .add(177, 177, 177))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(submitBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 91, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(242, 242, 242))))
+                    .add(rec3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 196, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(rec4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 196, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(rec2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 196, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(rec1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 196, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .add(247, 247, 247)
+                .add(submitBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 91, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(34, 34, 34)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(40, 40, 40)
+                .add(rec1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(college1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(college2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(college3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(college4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(college5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(stream1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(stream2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(stream3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(stream4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(stream5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 104, Short.MAX_VALUE)
+                .add(rec2)
+                .add(15, 15, 15)
+                .add(rec3)
+                .add(18, 18, 18)
+                .add(rec4)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 65, Short.MAX_VALUE)
                 .add(submitBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(56, 56, 56))
+                .add(54, 54, 54))
         );
 
         pack();
@@ -218,38 +156,19 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
     }//GEN-LAST:event_submitBtnActionPerformed
   
     private void submit(){
-        ArrayList<CollegeCourse> cc = new ArrayList<CollegeCourse>();
-        cc.add(new CollegeCourse(college1.getSelectedItem().toString(),stream1.getSelectedItem().toString()));
-        cc.add(new CollegeCourse(college2.getSelectedItem().toString(),stream2.getSelectedItem().toString()));
-        cc.add(new CollegeCourse(college3.getSelectedItem().toString(),stream3.getSelectedItem().toString()));
-        cc.add(new CollegeCourse(college4.getSelectedItem().toString(),stream4.getSelectedItem().toString()));
-        cc.add(new CollegeCourse(college5.getSelectedItem().toString(),stream5.getSelectedItem().toString()));
        
-       /* for (CollegeCourse collegeCourse : cc) {
-            System.out.println("College Name: " + collegeCourse.cllgName + ", Course Name: " + collegeCourse.courseName);
-        }*/
-        
-        new ApplyforCollegeUI(this.appNo, cc).setVisible(true);
-        //this.setVisible(false);
-        this.dispose();
     }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> college1;
-    private javax.swing.JComboBox<String> college2;
-    private javax.swing.JComboBox<String> college3;
-    private javax.swing.JComboBox<String> college4;
-    private javax.swing.JComboBox<String> college5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JComboBox<String> stream1;
-    private javax.swing.JComboBox<String> stream2;
-    private javax.swing.JComboBox<String> stream3;
-    private javax.swing.JComboBox<String> stream4;
-    private javax.swing.JComboBox<String> stream5;
+    private javax.swing.JCheckBox rec1;
+    private javax.swing.JCheckBox rec2;
+    private javax.swing.JCheckBox rec3;
+    private javax.swing.JCheckBox rec4;
     private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables
 
