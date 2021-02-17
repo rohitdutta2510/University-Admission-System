@@ -10,6 +10,7 @@ import UAS.utils.CollegeCourseInfo;
 import UAS.utils.CollegeCourse;
 import UAS.utils.CollegeManager;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -22,7 +23,7 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
 
     /** Creates new form ViewRecommendedCollegesUI */
     public ViewRecommendedCollegesUI(int rank,String appNo) {
-        CollegeManager mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\data.txt");
+        CollegeManager mgr = new CollegeManager("D:\\University Admission System\\University-Admission-System\\data.txt");
         //CollegeManager
         this.rank = rank;
         this.appNo = appNo;
@@ -37,9 +38,12 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
         }
         String[] coll = college.toArray(new String[college.size()]);
         String[] str = stream.toArray(new String[stream.size()]);
-        //take the array list and show them in ComboBox  
-        rec1.setText(coll[0] + "-" + str[0]);
+        //take the array list and show them in CheckBox  
         initComponents();
+        rec1.setText(coll[0] + "-" + str[0]);
+        rec2.setText(coll[1] + "-" + str[1]);
+        rec3.setText(coll[2] + "-" + str[2]);
+        rec4.setText(coll[3] + "-" + str[3]);
                
     }
 
@@ -136,13 +140,13 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
                     .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(40, 40, 40)
                 .add(rec1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(rec2)
-                .add(15, 15, 15)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(rec3)
-                .add(18, 18, 18)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(rec4)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 101, Short.MAX_VALUE)
                 .add(submitBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(54, 54, 54))
         );
@@ -156,6 +160,44 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
     }//GEN-LAST:event_submitBtnActionPerformed
   
     private void submit(){
+        ArrayList<String> sel_coll = new ArrayList<String>();
+        ArrayList<CollegeCourse> cc = new ArrayList<CollegeCourse>();
+        String[] coll_str = new String[4];
+        String[] coll = new String[4];
+        String[] stream = new String[4];
+        //String[] sel_coll = new String[4];
+        if(rec1.isSelected())
+        {
+            sel_coll.add(rec1.getText());
+        }
+        if(rec2.isSelected())
+        {
+            sel_coll.add(rec2.getText());
+        }
+        if(rec3.isSelected())
+        {
+            sel_coll.add(rec3.getText());
+        }
+        if(rec4.isSelected())
+        {
+            sel_coll.add(rec4.getText());
+        }
+       
+        for(int i = 0; i < sel_coll.size(); i++)
+        {
+            coll_str[i] = sel_coll.get(i);
+        }
+        for(int i = 0; i < coll_str.length; i++)
+        {
+            if(coll_str[i]==null)
+                break;
+            coll[i] = coll_str[i].substring(0,coll_str[i].indexOf("-"));
+            stream[i] = coll_str[i].substring(coll_str[i].indexOf("-"),coll_str[i].length());
+            cc.add(new CollegeCourse(coll[i],stream[i]));
+            System.out.println(coll[i]+"--"+stream[i]);
+
+        }
+        
        
     }
     
