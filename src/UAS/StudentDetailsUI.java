@@ -15,15 +15,17 @@ public class StudentDetailsUI extends javax.swing.JFrame {
     private StudentManager smgr;
     private StudentPersonalDetails spd;
 
+    private String applicationNumber;
     
-    public StudentDetailsUI() {
+    public StudentDetailsUI(String applicationNumber) {
         initComponents();      
-        smgr = new StudentManager("F:\\Projects\\University-Admission-System\\");
+        smgr = new StudentManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
+        this.applicationNumber = applicationNumber;
+        appNo.setText(applicationNumber);
     }
         
 
-    private void storeData(){
-        String app = appNo.getText();
+    private void storeData(){                
         String name = studentNameTextField.getText();
         String dob = dobTextField.getText();
         String fName = fatherNameTextField.getText();
@@ -46,10 +48,12 @@ public class StudentDetailsUI extends javax.swing.JFrame {
             if(jCheckBox1.isSelected()){
                 spd = new StudentPersonalDetails(dob, fName, mName, presentAddress,
                 permanentAddress, aadharNo, phnNo, gPhnNo, email, pDisabled);
-                smgr.updatePersonalDetails(app, name, spd);
+                smgr.updatePersonalDetails(this.applicationNumber, name, spd);
                 
-                new AcademicDetailsUI().setVisible(true);
+                new AcademicDetailsUI(applicationNumber).setVisible(true);
                 dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Check the box", "Error!", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -122,7 +126,6 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         jScrollPane2.setViewportView(permanentAddressTextField);
 
         image.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UAS/Avatar.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Student Details");

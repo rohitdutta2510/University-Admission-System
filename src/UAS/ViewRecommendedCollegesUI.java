@@ -22,7 +22,7 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
 
     /** Creates new form ViewRecommendedCollegesUI */
     public ViewRecommendedCollegesUI(int rank,String appNo) {
-        CollegeManager mgr = new CollegeManager("D:\\University Admission System\\University-Admission-System\\data.txt");
+        CollegeManager mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\data.txt");
         //CollegeManager
         this.rank = rank;
         this.appNo = appNo;
@@ -225,10 +225,13 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
         cc.add(new CollegeCourse(college4.getSelectedItem().toString(),stream4.getSelectedItem().toString()));
         cc.add(new CollegeCourse(college5.getSelectedItem().toString(),stream5.getSelectedItem().toString()));
        
-        for (CollegeCourse collegeCourse : cc) {
+       /* for (CollegeCourse collegeCourse : cc) {
             System.out.println("College Name: " + collegeCourse.cllgName + ", Course Name: " + collegeCourse.courseName);
-        }
-
+        }*/
+        
+        new ApplyforCollegeUI(this.appNo, cc).setVisible(true);
+        //this.setVisible(false);
+        this.dispose();
     }
     
 

@@ -14,11 +14,6 @@ import UAS.*;
 
 public class StudentMain {
     public static void main(String[] args) {
-<<<<<<< HEAD
-        new StudentDetailsUI().setVisible(true);
-            }
-=======
-        new ApplyforCollegeUI().setVisible(true);
+        new StudentDetailsUI("17022021").setVisible(true);
     }
->>>>>>> ad8fe4f79d0952141c1e42210a04e1d65b883762
 }

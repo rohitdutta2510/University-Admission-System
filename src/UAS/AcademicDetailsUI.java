@@ -15,10 +15,13 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
     private StudentManager smgr;
     private StudentAcademicDetails sad;
     private Subject[] sbList = new Subject[4];
+    int rank;
+    String appNo;
     
-    public AcademicDetailsUI() {
+    public AcademicDetailsUI(String appNo) {
         initComponents();
-        smgr = new StudentManager("F:\\Projects\\University-Admission-System\\");
+        this.appNo = appNo;
+        smgr = new StudentManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
         sbList[0] = new Subject("Physics", "XX", "XX");
         sbList[1] = new Subject("Chemistry", "XX", "XX");
         sbList[2] = new Subject("Maths", "XX", "XX");
@@ -274,7 +277,7 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
         String class10Sc = class10School.getText();
         String marks10 = class10Marks.getText();
         String boards10 = class10Boards.getText();
-        
+        this.rank = Integer.parseInt(rank);
         String class12Sc = class12School.getText();
         String marks12 = class12Marks.getText();
         String boards12 = class12Boards.getText();
@@ -303,7 +306,7 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
             sad = new StudentAcademicDetails(rank, class10Sc, boards10, marks10, class12Sc, boards10, marks12, sbList);
             smgr.updateAcademicDetails("application number", sad);
 
-            new ViewRecommendedCollegesUI().setVisible(true);
+           
             dispose();
             
         }
@@ -312,19 +315,9 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
         this.storeData();
+        new ViewRecommendedCollegesUI(this.rank, this.appNo).setVisible(true);
     }//GEN-LAST:event_submitBtnActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AcademicDetailsUI().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField class10Boards;

@@ -21,9 +21,15 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
     /**
      * Creates new form ApplyforCollegeUI
      */
-    CollegeManager mgr;
+    private CollegeManager mgr;
+    private String appNo;
+    private ArrayList<CollegeCourse> selectedFromRecc;
     
-    public ApplyforCollegeUI() {
+    
+    public ApplyforCollegeUI(String appNo, ArrayList<CollegeCourse> selectedFromRecc) {
+        this.appNo = appNo;
+        this.selectedFromRecc = selectedFromRecc;
+        
         mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\data.txt");
         ArrayList<CollegeCourseInfo> collegeCourseInfos = mgr.getCollegeCourseInfos();
 
@@ -56,8 +62,19 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         stream5ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));
         stream6ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));
         stream7ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));
-        stream8ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));       
+        stream8ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));      
         
+        
+        college1ComboBox.setSelectedItem(this.selectedFromRecc.get(0).cllgName);
+        college2ComboBox.setSelectedItem(this.selectedFromRecc.get(1).cllgName);
+        college3ComboBox.setSelectedItem(this.selectedFromRecc.get(2).cllgName);
+        college4ComboBox.setSelectedItem(this.selectedFromRecc.get(3).cllgName);
+        
+        
+        stream1ComboBox.setSelectedItem(this.selectedFromRecc.get(0).courseName);
+        stream2ComboBox.setSelectedItem(this.selectedFromRecc.get(1).courseName);
+        stream3ComboBox.setSelectedItem(this.selectedFromRecc.get(2).courseName);
+        stream4ComboBox.setSelectedItem(this.selectedFromRecc.get(3).courseName);        
     }   
     
     
@@ -263,7 +280,7 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         choices.add(choice7);  
         choices.add(choice8);        
         
-        StudentChoiceDetails studentChoiceDetails = new StudentChoiceDetails(1224903435, choices);
+        StudentChoiceDetails studentChoiceDetails = new StudentChoiceDetails(this.appNo, choices);
         if (checkBox.isSelected()) {
             mgr.applyForCollege(studentChoiceDetails);
             JOptionPane.showMessageDialog(null, "Choices are selected", "Successful!", JOptionPane.INFORMATION_MESSAGE);
