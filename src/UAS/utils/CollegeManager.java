@@ -46,7 +46,7 @@ public class CollegeManager {
     public ArrayList<CollegeCourseInfo> recommendCollegeCourse(int rank){
         ArrayList<CollegeCourseInfo> recommendations = new ArrayList<CollegeCourseInfo>();
         for (CollegeCourseInfo collegeCourseInfo : collegeCourseInfos) {
-            if (rank>=collegeCourseInfo.openingRank) {
+            if (rank<=collegeCourseInfo.openingRank) {
                 recommendations.add(collegeCourseInfo);
             }            
         }
