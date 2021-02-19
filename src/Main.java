@@ -12,8 +12,9 @@
 
 import UAS.*;
 
-public class StudentMain {
+public class Main {
     public static void main(String[] args) {
-        new StudentDetailsUI("17022021").setVisible(true);
+        //new StudentDetailsUI("17022021").setVisible(true);
+        new AdminLogin().setVisible(true);
     }
 }
