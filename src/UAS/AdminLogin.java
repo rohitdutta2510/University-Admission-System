@@ -107,7 +107,9 @@ public class AdminLogin extends javax.swing.JFrame {
         //System.out.println("userID: " + userId + ", " + "Password: " + password);
         if(admin.login(userId, password)){
             //JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
-            JOptionPane.showMessageDialog(null, "Login Successful!!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Login Successful!!", "Success!", JOptionPane.INFORMATION_MESSAGE);   
+            new AllocateSeatUI().setVisible(true);
+            this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Incorrect userid or password", "Error!", JOptionPane.ERROR_MESSAGE);   
         }
