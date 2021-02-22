@@ -1,7 +1,5 @@
 package UAS;
-import UAS.utils.CollegeCourseInfo;
-import UAS.utils.CollegeManager;
-import UAS.utils.StudentChoiceDetails;
+import UAS.utils.AdmissionICManager;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -15,25 +13,14 @@ import java.util.logging.Logger;
 
 public class AllocateSeatUI extends javax.swing.JFrame {
 
-    private CollegeManager cMgr;
-    private ArrayList<CollegeCourseInfo> collegeCourseInfos;
-    private ArrayList<StudentChoiceDetails> studentChoices;
+    private AdmissionICManager admissionICManager;
     
     public AllocateSeatUI() {
+        this.admissionICManager = new AdmissionICManager();
         initComponents();
-        cMgr = new CollegeManager("F:\\Projects\\University-Admission-System\\data.txt");
-        this.collegeCourseInfos = new ArrayList<CollegeCourseInfo>();
-        this.studentChoices = new ArrayList<StudentChoiceDetails>();
     }
     
-    
-    public void allocate(){
-        this.collegeCourseInfos = cMgr.getCollegeCourseInfos();
-        System.out.println(collegeCourseInfos.get(2).collegeName);
-        this.studentChoices = cMgr.getStudentChoiceDetails();
-        System.out.println(studentChoices.get(2).choices.get(0));
 
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,7 +93,7 @@ public class AllocateSeatUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.allocate();
+        admissionICManager.allocate();
     }//GEN-LAST:event_jButton1ActionPerformed
     
 

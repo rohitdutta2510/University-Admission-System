@@ -1,0 +1,30 @@
+220221,1,IEM,B.Tech(CSE),IEM,B.Tech(ECE),IEM,B.Tech(EE),IEM,B.Tech(ME),Asansol Engineering,B.Tech(CSE),TMSL,B.Tech(ECE),HIT,B.Tech(ME),None,None
+220222,2,IEM,B.Tech(CSE),IEM,B.Tech(ECE),Narula Institute,B.Tech(EE),TMSL,B.Tech(ECE),Guru Nanak Institute,B.Tech(ECE),HIT,B.Tech(ME),None,None,None,None
+220223,3,IEM,B.Tech(CSE),TMSL,B.Tech(CSE),IEM,B.Tech(ECE),TMSL,B.Tech(ECE),MSIT,B.Tech(CSE),Asansol Engineering,B.Tech(CSE),Guru Nanak Institute,B.Tech(ECE),None,None
+220224,4,IEM,B.Tech(CSE),IEM,B.Tech(ECE),TMSL,B.Tech(ECE),BP Poddar,B.Tech(CSE),HIT,B.Tech(ECE),HIT,B.Tech(CSE),B.C. Roy,B.Tech(ECE),None,None
+220225,5,MSIT,B.Tech(CSE),TMSL,B.Tech(CSE),IEM,B.Tech(EE),IEM,B.Tech(ME),Asansol Engineering,B.Tech(CSE),BP Poddar,B.Tech(ECE),TMSL,B.Tech(ECE),None,None
+220226,6,IEM,B.Tech(CSE),IEM,B.Tech(ECE),TMSL,B.Tech(ECE),IEM,B.Tech(ME),Guru Nanak Institute,B.Tech(ECE),HIT,B.Tech(ME),B.C. Roy,B.Tech(ECE),None,None
+220227,7,Asansol Engineering,B.Tech(CSE),Asansol Engineering,B.Tech(ECE),HIT,B.Tech(CSE),B.C Roy,B.Tech(CSE),Asansol Engineering,B.Tech(CSE),BP Poddar,B.Tech(ECE),None,None,None,None
+220228,8,IEM,B.Tech(CSE),TMSL,B.Tech(CSE),IEM,B.Tech(ECE),TMSL,B.Tech(ECE),MSIT,B.Tech(CSE),Asansol Engineering,B.Tech(CSE),B.C. Roy,B.Tech(ECE),None,None
+220229,9,Asansol Engineering,B.Tech(CSE),IEM,B.Tech(ECE),TMSL,B.Tech(ECE),BP Poddar,B.Tech(CSE),HIT,B.Tech(ECE),HIT,B.Tech(CSE),B.C. Roy,B.Tech(ECE),None,None
+220230,10,MSIT,B.Tech(CSE),TMSL,B.Tech(CSE),IEM,B.Tech(EE),IEM,B.Tech(ME),Guru Nanak Institute,B.Tech(ECE),BP Poddar,B.Tech(ECE),HIT,B.Tech(ME),None,None
+220231,11,IEM,B.Tech(CSE),TMSL,B.Tech(ECE),Narula Institute,B.Tech(EE),IEM,B.Tech(ME),Guru Nanak Institute,B.Tech(ECE),Narula Institute,B.Tech(ECE),BP Poddar,B.Tech(ECE),None,None
+220232,12,IEM,B.Tech(CSE),IEM,B.Tech(ECE),IEM,B.Tech(EE),IEM,B.Tech(ME),Guru Nanak Institute,B.Tech(ECE),HIT,B.Tech(ME),None,None,None,None
+220233,13,IEM,B.Tech(CSE),TMSL,B.Tech(CSE),IEM,B.Tech(ECE),TMSL,B.Tech(ECE),MSIT,B.Tech(CSE),Narula Institute,B.Tech(ECE),B.C. Roy,B.Tech(ECE),None,None
+220234,14,IEM,B.Tech(CSE),TMSL,B.Tech(ECE),TMSL,B.Tech(ECE),BP Poddar,B.Tech(CSE),HIT,B.Tech(ECE),HIT,B.Tech(CSE),None,None,None,None
+220235,15,MSIT,B.Tech(CSE),TMSL,B.Tech(CSE),HIT,B.Tech(ECE),IEM,B.Tech(ME),BP Poddar,B.Tech(ECE),Guru Nanak Institute,B.Tech(CSE),B.C. Roy,B.Tech(ECE),None,None
+220236,16,IEM,B.Tech(ECE),MSIT,B.Tech(CSE),IEM,B.Tech(EE),IEM,B.Tech(ME),Guru Nanak Institute,B.Tech(CSE),Narula Institute,B.Tech(ECE),HIT,B.Tech(ME),None,None
+220237,17,JIS,B.Tech(CSE),IEM,B.Tech(ECE),Narula Institute,B.Tech(EE),IEM,B.Tech(ME),Asansol Engineering,B.Tech(CSE),Guru Nanak Institute,B.Tech(ECE),BP Poddar,B.Tech(ECE),B.C. Roy,B.Tech(ECE)
+220238,18,IEM,B.Tech(CSE),TMSL,B.Tech(CSE),IEM,B.Tech(ECE),TMSL,B.Tech(ECE),MSIT,B.Tech(CSE),JIS,B.Tech(ECE),Asansol Engineering,B.Tech(CSE),HIT,B.Tech(ME)
+220239,19,JIS,B.Tech(CSE),TMSL,B.Tech(ECE),TMSL,B.Tech(ECE),BP Poddar,B.Tech(CSE),MSIT,B.Tech(CSE),HIT,B.Tech(CSE),Guru Nanak Institute,B.Tech(CSE),None,None
+220240,20,TMSL,B.Tech(ECE),MSIT,B.Tech(CSE),IEM,B.Tech(EE),IEM,B.Tech(ME),Asansol Engineering,B.Tech(CSE),Narula Institute,B.Tech(ECE),BP Poddar,B.Tech(ECE),B.C. Roy,B.Tech(ECE)
+220241,21,TMSL,B.Tech(ECE),HIT,B.Tech(CSE),Guru Nanak Institute,B.Tech(ECE),IEM,B.Tech(ME),HIT,B.Tech(CSE),None,None,None,None,None,None
+220242,22,MSIT,B.Tech(ECE),Asansol Engineering,B.Tech(CSE),IEM,B.Tech(EE),JIS,B.Tech(ECE),JIS,B.Tech(CSE),None,None,None,None,None,None
+220243,23,B.C. Roy,B.Tech(ECE),HIT,B.Tech(CSE),Guru Nanak Institute,B.Tech(ECE),IEM,B.Tech(ME),JIS,B.Tech(CSE),None,None,None,None,None,None
+220244,24,MSIT,B.Tech(ECE),Asansol Engineering,B.Tech(CSE),IEM,B.Tech(EE),IEM,B.Tech(ME),MSIT,B.Tech(CSE),None,None,None,None,None,None
+220245,25,B.C. Roy,B.Tech(ECE),JIS,B.Tech(CSE),TMSL,B.Tech(CSE),IEM,B.Tech(ME),Asansol Engineering,B.Tech(CSE),None,None,None,None,None,None
+220246,26,HIT,B.Tech(ECE),Narula Institute,B.Tech(CSE),IEM,B.Tech(EE),Guru Nanak,B.Tech(CSE),IEM,B.Tech(CSE),None,None,None,None,None,None
+220247,27,Asansol Engineering,B.Tech(CSE),MSIT,B.Tech(CSE),TMSL,B.Tech(EE),Narula Institute,B.Tech(CSE),TMSL,B.Tech(CSE),None,None,None,None,None,None
+220248,28,HIT,B.Tech(ECE),BP Poddar,B.Tech(CSE),IEM,B.Tech(EE),Narula Institute,B.Tech(CSE),Narula Institute,B.Tech(CSE),None,None,None,None,None,None
+220249,29,Asansol Engineering,B.Tech(ECE),BP Poddar,B.Tech(CSE),TMSL,B.Tech(EE),Narula Institute,B.Tech(ECE),Asansol Engineering,B.Tech(CSE),None,None,None,None,None,None
+220250,30,IEM,B.Tech(EE),MSIT,B.Tech(CSE),IEM,B.Tech(EE),IEM,B.Tech(ME),None,None,None,None,None,None,None,None
