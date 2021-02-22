@@ -62,14 +62,34 @@ public class StudentManager {
                 }
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(StudentManager.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.print("File Not Found");
         } catch (IOException ex) {
-            Logger.getLogger(StudentManager.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("I/O Exception");
         }
         return true;
     }
-    public void login(){
-        
+    
+    public boolean login(String appNo, String password){
+        String file = this.filepath + "StudentAccountDetails.txt";
+        try {        
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            while (line!=null) {        
+                String[] row = line.split(",");
+                if (row[2].equals(password) && row[3].equals(appNo)) {
+                    return true;                    
+                }
+                line = br.readLine();
+            }
+            br.close();
+            fr.close();            
+        } catch (FileNotFoundException ex) {
+            System.err.print("File Not Found");
+        } catch (IOException ex) {
+            System.err.println("I/O Exception");
+        }
+        return false;
     }
     
     public void updatePersonalDetails(String appno, String name, StudentPersonalDetails stud){
