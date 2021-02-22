@@ -1,10 +1,15 @@
 package UAS.utils;
 
+import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,13 +21,80 @@ public class StudentManager {
     public StudentManager(String filepath){
         this.filepath = filepath;
     }
-    /*
-    public void register(){
-        
+    
+    public boolean register(StudentAccountInfo accountInfo){
+        String file = this.filepath + "StudentAccountDetails.txt";
+        try {
+            File f = new File(file);
+            if(f.length()==0){
+                FileWriter fw = new FileWriter(file, true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String lw = String.join(",", accountInfo.name, accountInfo.emailID, accountInfo.password, accountInfo.appNo);
+                lw = lw + "\n";                
+                bw.write(lw);
+                bw.close();
+                fw.close();                    
+            }else{
+                int flag = 0;
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                String line = br.readLine();         
+                while(line!=null){
+                    String[] row = line.split(",");
+                    //System.out.println("FILE LINE: " + line);
+                    if(row[1].equals(accountInfo.emailID)){
+                        flag = 1;
+                    }                    
+                    line = br.readLine();
+                }                      
+                br.close();
+                fr.close();
+                if(flag==0){
+                    FileWriter fw = new FileWriter(file, true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    String lw = String.join(",", accountInfo.name, accountInfo.emailID, accountInfo.password, accountInfo.appNo);
+                    lw = lw + "\n";                
+                    bw.write(lw);
+                    bw.close();
+                    fw.close();  
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            System.err.print("File Not Found");
+        } catch (IOException ex) {
+            System.err.println("I/O Exception");
+        }
+        return true;
     }
-    public void login(){
-        
-    }*/
+    
+    public boolean login(String appNo, char[] password){
+        String file = this.filepath + "StudentAccountDetails.txt";
+        try {        
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            while (line!=null) {                        
+                String[] row = line.split(",");
+                char[] p1 = row[2].toCharArray();
+                System.out.println("PASSWORD IN FILE: " + p1.toString() + ", INPUT PASSWORD: " + password.toString());                
+                if (Arrays.equals(p1, password) && row[3].equals(appNo)) {
+                    return true;                    
+                }
+                line = br.readLine();
+            }
+            br.close();
+            fr.close();            
+        } catch (FileNotFoundException ex) {
+            System.err.print("File Not Found");
+        } catch (IOException ex) {
+            System.err.println("I/O Exception");
+        }
+        return false;
+    }
+    
     public void updatePersonalDetails(String appno, String name, StudentPersonalDetails stud){
         try {
          FileWriter fw = new FileWriter(this.filepath + "StudentPersonalDetails.txt", true);
