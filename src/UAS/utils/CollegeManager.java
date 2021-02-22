@@ -12,17 +12,20 @@ import java.util.logging.Logger;
 
 public class CollegeManager {
     private ArrayList<CollegeCourseInfo> collegeCourseInfos;
+    private ArrayList<StudentChoiceDetails> studChoice;
+    private ArrayList<CollegeCourse> collegeCourses;
     private String filepath;
 
     public CollegeManager(String filepath) {
         this.filepath = filepath;        
         this.collegeCourseInfos = new ArrayList<CollegeCourseInfo>();
-        this.readfile();
+        this.studChoice = new ArrayList<StudentChoiceDetails>();
+        this.collegeCourses = new ArrayList<CollegeCourse>();
     }
     
-    private void readfile(){
+    private void readCollegeInfo(){
         try {
-            FileReader fr = new FileReader(this.filepath);
+            FileReader fr = new FileReader(this.filepath + "collegedata.txt");
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while(line!=null){
@@ -37,9 +40,41 @@ public class CollegeManager {
         } catch (IOException ex) {
             Logger.getLogger(CollegeManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }   
+    }  
+    
+    
+    private void readStudChoice(){
+        try {
+            FileReader fr = new FileReader(this.filepath + "studentchoice.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            while(line!=null){
+                //System.out.println(line);
+                String[] row = line.split(",");
+                
+                for (int i=2; i<18; i+=2){
+                    CollegeCourse collegeCourse = new CollegeCourse(row[i], row[i+1]);
+                    this.collegeCourses.add(collegeCourse);
+                }
+                
+                StudentChoiceDetails data = new StudentChoiceDetails(row[0], Integer.parseInt(row[1]), collegeCourses);
+                this.studChoice.add(data);
+                line = br.readLine();
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CollegeManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(CollegeManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public ArrayList<StudentChoiceDetails> getStudentChoiceDetails(){
+        this.readStudChoice();
+        return studChoice;
+    }
     
     public ArrayList<CollegeCourseInfo> getCollegeCourseInfos() {
+        this.readCollegeInfo();
         return collegeCourseInfos;
     }       
     

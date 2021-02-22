@@ -1,23 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UAS;
+import UAS.utils.CollegeCourseInfo;
+import UAS.utils.CollegeManager;
+import UAS.utils.StudentChoiceDetails;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author THUNDER
- */
+
 public class AllocateSeatUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AllocateSeatUI
-     */
+    private CollegeManager cMgr;
+    private ArrayList<CollegeCourseInfo> collegeCourseInfos;
+    private ArrayList<StudentChoiceDetails> studentChoices;
+    
     public AllocateSeatUI() {
         initComponents();
+        cMgr = new CollegeManager("F:\\Projects\\University-Admission-System\\data.txt");
+        this.collegeCourseInfos = new ArrayList<CollegeCourseInfo>();
+        this.studentChoices = new ArrayList<StudentChoiceDetails>();
     }
+    
+    
+    public void allocate(){
+        this.collegeCourseInfos = cMgr.getCollegeCourseInfos();
+        System.out.println(collegeCourseInfos.get(2).collegeName);
+        this.studentChoices = cMgr.getStudentChoiceDetails();
+        System.out.println(studentChoices.get(2).choices.get(0));
 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,6 +61,11 @@ public class AllocateSeatUI extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 51, 51));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("Allocate");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,6 +103,11 @@ public class AllocateSeatUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.allocate();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
