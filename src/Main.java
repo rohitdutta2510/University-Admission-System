@@ -15,6 +15,7 @@ import UAS.*;
 public class Main {
     public static void main(String[] args) {
         //new StudentDetailsUI("17022021").setVisible(true);
-        new AdminLogin().setVisible(true);
+        //new AdminLogin().setVisible(true);
+        new ViewRecommendedCollegesUI(5000, "245000").setVisible(true);
     }
 }

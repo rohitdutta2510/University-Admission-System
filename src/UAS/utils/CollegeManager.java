@@ -59,6 +59,7 @@ public class CollegeManager {
             FileWriter fw = new FileWriter(filepath, true);
             BufferedWriter bw = new BufferedWriter(fw);
             String data = choiceDetails.appNo + ", ";
+            String rank = choiceDetails.rank + ", ";
             for (CollegeCourse choice : choiceDetails.choices) {
                 data = data + choice.cllgName + ", " + choice.courseName + ", ";
             }                      

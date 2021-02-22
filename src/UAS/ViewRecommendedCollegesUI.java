@@ -197,7 +197,7 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
             //System.out.println(coll[i]+"--"+stream[i]);
         }
         
-        new ApplyforCollegeUI(appNo, cc).setVisible(true);
+        new ApplyforCollegeUI(this.appNo, this.rank, cc).setVisible(true);
        
     }
     
