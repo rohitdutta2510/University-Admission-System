@@ -5,6 +5,9 @@
  */
 package UAS;
 
+import UAS.utils.StudentManager;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author THUNDER
@@ -14,7 +17,9 @@ public class LoginUI extends javax.swing.JFrame {
     /**
      * Creates new form LoginUI
      */
+    StudentManager studentManager;
     public LoginUI() {
+        studentManager = new StudentManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
         initComponents();
     }
 
@@ -33,8 +38,6 @@ public class LoginUI extends javax.swing.JFrame {
         applicationNumberTextField = new javax.swing.JTextField();
         loginBtn = new javax.swing.JButton();
         registerBtn = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
         adminPortalBtn = new javax.swing.JButton();
 
@@ -64,11 +67,6 @@ public class LoginUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Developed by");
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UAS/path10.png"))); // NOI18N
-
         adminPortalBtn.setBackground(new java.awt.Color(102, 255, 102));
         adminPortalBtn.setText("ADMIN");
         adminPortalBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -81,14 +79,8 @@ public class LoginUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,7 +105,7 @@ public class LoginUI extends javax.swing.JFrame {
                                         .addComponent(passwordField)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                                 .addComponent(adminPortalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(95, 95, 95))))))
         );
@@ -136,14 +128,11 @@ public class LoginUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(adminPortalBtn)
                             .addComponent(registerBtn))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(loginBtn)
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel4)
-                        .addGap(37, 37, 37))))
+                        .addGap(124, 124, 124))))
         );
 
         pack();
@@ -155,12 +144,22 @@ public class LoginUI extends javax.swing.JFrame {
     }//GEN-LAST:event_registerBtnActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:     
+        String appNo = applicationNumberTextField.getText();
+        char[] password = passwordField.getPassword();   
+        if(studentManager.login(appNo, password)){
+            JOptionPane.showMessageDialog(null, "Login Successful!!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+            new StudentDetailsUI(appNo).setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Incorrect userid or password", "Error!", JOptionPane.ERROR_MESSAGE);   
+        }
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void adminPortalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminPortalBtnActionPerformed
         // TODO add your handling code here:
         new AdminLogin().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_adminPortalBtnActionPerformed
 
     /**
@@ -204,8 +203,6 @@ public class LoginUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JButton registerBtn;

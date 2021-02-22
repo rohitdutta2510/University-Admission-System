@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -69,15 +70,17 @@ public class StudentManager {
         return true;
     }
     
-    public boolean login(String appNo, String password){
+    public boolean login(String appNo, char[] password){
         String file = this.filepath + "StudentAccountDetails.txt";
         try {        
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
-            while (line!=null) {        
+            while (line!=null) {                        
                 String[] row = line.split(",");
-                if (row[2].equals(password) && row[3].equals(appNo)) {
+                char[] p1 = row[2].toCharArray();
+                System.out.println("PASSWORD IN FILE: " + p1.toString() + ", INPUT PASSWORD: " + password.toString());                
+                if (Arrays.equals(p1, password) && row[3].equals(appNo)) {
                     return true;                    
                 }
                 line = br.readLine();
