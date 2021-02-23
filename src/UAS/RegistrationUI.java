@@ -5,6 +5,11 @@
  */
 package UAS;
 
+import UAS.utils.StudentAccountInfo;
+import UAS.utils.StudentManager;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author THUNDER
@@ -14,8 +19,14 @@ public class RegistrationUI extends javax.swing.JFrame {
     /**
      * Creates new form RegistrationUI
      */
+    
+    StudentManager sMgr;
+    
     public RegistrationUI() {
         initComponents();
+        sMgr = new StudentManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
+        String appNo = sMgr.applicationNumberGenerator();
+        applicationNumberLabel.setText(appNo);
     }
 
     /**
@@ -36,10 +47,10 @@ public class RegistrationUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
         emailIdTextField = new javax.swing.JTextField();
-        confirmBtn = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
-        passwordField = new javax.swing.JPasswordField();
-        confirmPasswordField = new javax.swing.JPasswordField();
+        confirmBtn = new javax.swing.JButton();
+        passwordField = new javax.swing.JTextField();
+        confirmPasswordField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -58,14 +69,14 @@ public class RegistrationUI extends javax.swing.JFrame {
 
         jLabel7.setText("Confirm Password");
 
-        confirmBtn.setBackground(new java.awt.Color(51, 153, 255));
-        confirmBtn.setText("CONFIRM");
-
         jCheckBox1.setText("I, confirm the above details are accurate and will be reponsible for any discrepencies that arise.");
         jCheckBox1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+
+        confirmBtn.setBackground(new java.awt.Color(0, 153, 255));
+        confirmBtn.setText("CONFIRM");
+        confirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                confirmBtnActionPerformed(evt);
             }
         });
 
@@ -108,10 +119,11 @@ public class RegistrationUI extends javax.swing.JFrame {
                         .addGap(84, 84, 84))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(224, 224, 224))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(confirmBtn)
-                        .addGap(243, 243, 243))))
+                        .addGap(224, 224, 224))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addComponent(confirmBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,49 +160,44 @@ public class RegistrationUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+        confirm();
+    }//GEN-LAST:event_confirmBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+     private void confirm() {        
+        System.out.println("Confirm Button Pressed");        
+        String appNo = applicationNumberLabel.getText();
+        String name = nameTextField.getText();
+        String email = emailIdTextField.getText();
+        String password = passwordField.getText();        
+        String confirmPassword = confirmPasswordField.getText();
+        if(name.isEmpty() && email.isEmpty() && password.isEmpty() && confirmPassword.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Empty fields present", "ERROR", JOptionPane.ERROR_MESSAGE);                        
+        }else{
+            if(jCheckBox1.isSelected()){
+                if(password.equals(confirmPassword)){                
+                    StudentAccountInfo acc = new StudentAccountInfo(name, email, password, appNo);
+                    if(sMgr.register(acc))
+                    {
+                        JOptionPane.showMessageDialog(null, "Registration Successful!!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Account already exists", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Password doesn't match!", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrationUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrationUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrationUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrationUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }else{
+                JOptionPane.showMessageDialog(null, "Agree to the Terms and Condition.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }     
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistrationUI().setVisible(true);
-            }
-        });
     }
+         
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel applicationNumberLabel;
     private javax.swing.JButton confirmBtn;
-    private javax.swing.JPasswordField confirmPasswordField;
+    private javax.swing.JTextField confirmPasswordField;
     private javax.swing.JTextField emailIdTextField;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
@@ -200,6 +207,7 @@ public class RegistrationUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField passwordField;
     // End of variables declaration//GEN-END:variables
+    
 }

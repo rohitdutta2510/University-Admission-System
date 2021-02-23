@@ -47,12 +47,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="loginBtn" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="applicationNumberTextField" pref="200" max="32767" attributes="0"/>
-                                      <Component id="passwordField" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="applicationNumberTextField" pref="200" max="32767" attributes="0"/>
+                                  <Component id="passwordField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -145,8 +143,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="passwordField">
-    </Component>
     <Component class="javax.swing.JButton" name="adminPortalBtn">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -157,6 +153,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminPortalBtnActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="passwordField">
     </Component>
   </SubComponents>
 </Form>

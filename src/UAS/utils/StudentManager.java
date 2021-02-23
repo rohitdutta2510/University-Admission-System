@@ -7,19 +7,32 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class StudentManager {
+public class StudentManager {   
     
     private String filepath;
     
     public StudentManager(String filepath){
         this.filepath = filepath;
+    }
+    
+    public String applicationNumberGenerator(){
+        /*
+        Year + Date + CurrentTimeSec - Application Number
+        20210902192403
+        ddmm + hhmmss
+        */
+        String appNo = "";        
+        LocalDateTime datetime = LocalDateTime.now();
+        appNo = appNo + datetime.getDayOfMonth() + datetime.getMonthValue() + datetime.getHour() + datetime.getMinute() + datetime.getSecond();        
+        System.out.println(appNo);       
+        return appNo;
     }
     
     public boolean register(StudentAccountInfo accountInfo){
@@ -70,7 +83,7 @@ public class StudentManager {
         return true;
     }
     
-    public boolean login(String appNo, char[] password){
+    public boolean login(String appNo, String password){
         String file = this.filepath + "StudentAccountDetails.txt";
         try {        
             FileReader fr = new FileReader(file);
@@ -78,9 +91,9 @@ public class StudentManager {
             String line = br.readLine();
             while (line!=null) {                        
                 String[] row = line.split(",");
-                char[] p1 = row[2].toCharArray();
+                String p1 = row[2];
                 System.out.println("PASSWORD IN FILE: " + p1.toString() + ", INPUT PASSWORD: " + password.toString());                
-                if (Arrays.equals(p1, password) && row[3].equals(appNo)) {
+                if (p1.equals(password) && row[3].equals(appNo)) {
                     return true;                    
                 }
                 line = br.readLine();

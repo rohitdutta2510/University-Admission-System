@@ -38,8 +38,8 @@ public class LoginUI extends javax.swing.JFrame {
         applicationNumberTextField = new javax.swing.JTextField();
         loginBtn = new javax.swing.JButton();
         registerBtn = new javax.swing.JButton();
-        passwordField = new javax.swing.JPasswordField();
         adminPortalBtn = new javax.swing.JButton();
+        passwordField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,11 +98,10 @@ public class LoginUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(loginBtn)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(applicationNumberTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                        .addComponent(passwordField)))
+                                    .addComponent(applicationNumberTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(passwordField))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
@@ -141,12 +140,13 @@ public class LoginUI extends javax.swing.JFrame {
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         // TODO add your handling code here:
         new RegistrationUI().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_registerBtnActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:     
         String appNo = applicationNumberTextField.getText();
-        char[] password = passwordField.getPassword();   
+        String password = passwordField.getText();   
         if(studentManager.login(appNo, password)){
             JOptionPane.showMessageDialog(null, "Login Successful!!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
             new StudentDetailsUI(appNo).setVisible(true);
@@ -204,7 +204,7 @@ public class LoginUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton loginBtn;
-    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField passwordField;
     private javax.swing.JButton registerBtn;
     // End of variables declaration//GEN-END:variables
 }
