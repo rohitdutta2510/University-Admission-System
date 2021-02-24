@@ -23,7 +23,7 @@ public class ViewRecommendedCollegesUI extends javax.swing.JFrame {
 
     /** Creates new form ViewRecommendedCollegesUI */
     public ViewRecommendedCollegesUI(int rank,String appNo) {
-        CollegeManager mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\data.txt");
+        CollegeManager mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
         //CollegeManager
         this.rank = rank;
         this.appNo = appNo;

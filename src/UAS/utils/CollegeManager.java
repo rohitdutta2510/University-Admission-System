@@ -20,12 +20,12 @@ public class CollegeManager {
         this.filepath = filepath;        
         this.collegeCourseInfos = new ArrayList<CollegeCourseInfo>();
         this.studChoice = new ArrayList<StudentChoiceDetails>();
-        this.collegeCourses = new ArrayList<CollegeCourse>();
+        this.collegeCourses = new ArrayList<CollegeCourse>();        
     }
     
     private void readCollegeInfo(){
         try {
-            FileReader fr = new FileReader(this.filepath + "collegedata.txt");
+            FileReader fr = new FileReader(this.filepath + "data.txt");
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while(line!=null){
@@ -75,12 +75,13 @@ public class CollegeManager {
     
     public ArrayList<CollegeCourseInfo> getCollegeCourseInfos() {
         this.readCollegeInfo();
-        return collegeCourseInfos;
+        return this.collegeCourseInfos;
     }       
     
     public ArrayList<CollegeCourseInfo> recommendCollegeCourse(int rank){
+        ArrayList<CollegeCourseInfo> xC = this.getCollegeCourseInfos();
         ArrayList<CollegeCourseInfo> recommendations = new ArrayList<CollegeCourseInfo>();
-        for (CollegeCourseInfo collegeCourseInfo : collegeCourseInfos) {
+        for (CollegeCourseInfo collegeCourseInfo : xC) {
             if (rank<=collegeCourseInfo.openingRank) {
                 recommendations.add(collegeCourseInfo);
             }            

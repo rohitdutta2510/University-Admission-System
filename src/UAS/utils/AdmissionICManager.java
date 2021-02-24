@@ -26,7 +26,7 @@ public class AdmissionICManager {
     
     public AdmissionICManager(){
         admissionIC = new AdmissionIC();  
-        cMgr = new CollegeManager("F:\\Projects\\University-Admission-System\\");
+        cMgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System");
         this.collegeCourseInfos = new ArrayList<CollegeCourseInfo>();
         this.studentChoices = new ArrayList<StudentChoiceDetails>();
         this.seatAllotmentInfos = new ArrayList<SeatAllotmentInfo>();
@@ -69,7 +69,7 @@ public class AdmissionICManager {
     
     private void saveAllotment(ArrayList<SeatAllotmentInfo> seatAllotmentInfos){
         try {
-            FileWriter fw = new FileWriter("F:\\Projects\\University-Admission-System\\SeatAllotment.txt");
+            FileWriter fw = new FileWriter("E:\\Works\\Software Engg\\CODE\\University-Admission-System");
             BufferedWriter bw = new BufferedWriter(fw);
             for(int i=0; i<seatAllotmentInfos.size(); i++){
                 data = String.join(",", Integer.toString(seatAllotmentInfos.get(i).appNo), seatAllotmentInfos.get(i).collegeName, seatAllotmentInfos.get(i).courseName);
