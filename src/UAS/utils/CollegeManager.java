@@ -25,7 +25,7 @@ public class CollegeManager {
     
     private void readCollegeInfo(){
         try {
-            FileReader fr = new FileReader(this.filepath + "data.txt");
+            FileReader fr = new FileReader(this.filepath + "collegedata.txt");
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while(line!=null){
