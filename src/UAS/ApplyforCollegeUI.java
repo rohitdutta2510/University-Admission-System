@@ -32,7 +32,7 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         this.rank = rank;
         this.selectedFromRecc = selectedFromRecc;
         
-        mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
+        mgr = new CollegeManager();
 
         ArrayList<CollegeCourseInfo> collegeCourseInfos = mgr.getCollegeCourseInfos();
 
@@ -310,10 +310,12 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         StudentChoiceDetails studentChoiceDetails = new StudentChoiceDetails(this.appNo, this.rank, choices);
         if (checkBox.isSelected()) {
             mgr.applyForCollege(studentChoiceDetails);
-            JOptionPane.showMessageDialog(null, "Choices are selected", "Successful!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Choices submitted successfully", "Successful!", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+            JOptionPane.showMessageDialog(null, "Successfully Logged Out", "Successful!", JOptionPane.INFORMATION_MESSAGE);
         }else{
             //JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
-            JOptionPane.showMessageDialog(null, "Check the box", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Agree to the terms & conditions", "Error!", JOptionPane.ERROR_MESSAGE);
         }        
     }   
    

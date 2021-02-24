@@ -9,17 +9,17 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 public class StudentManager {   
     
-    private String filepath;
-    
-    public StudentManager(String filepath){
-        this.filepath = filepath;
+    //private String filepath;
+    private ArrayList<SeatAllotmentInfo> seatAllotmentInfos;
+    public StudentManager(){
+        //this.filepath = filepath;
+        this.seatAllotmentInfos = new ArrayList<SeatAllotmentInfo>();
     }
     
     public String applicationNumberGenerator(){
@@ -36,7 +36,7 @@ public class StudentManager {
     }
     
     public boolean register(StudentAccountInfo accountInfo){
-        String file = this.filepath + "StudentAccountDetails.txt";
+        String file = "StudentAccountDetails.txt";
         try {
             File f = new File(file);
             if(f.length()==0){
@@ -57,6 +57,7 @@ public class StudentManager {
                     //System.out.println("FILE LINE: " + line);
                     if(row[1].equals(accountInfo.emailID)){
                         flag = 1;
+                        break;
                     }                    
                     line = br.readLine();
                 }                      
@@ -84,7 +85,7 @@ public class StudentManager {
     }
     
     public boolean login(String appNo, String password){
-        String file = this.filepath + "StudentAccountDetails.txt";
+        String file = "StudentAccountDetails.txt";
         try {        
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
@@ -110,7 +111,7 @@ public class StudentManager {
     
     public void updatePersonalDetails(String appno, String name, StudentPersonalDetails stud){
         try {
-         FileWriter fw = new FileWriter(this.filepath + "StudentPersonalDetails.txt", true);
+         FileWriter fw = new FileWriter("StudentPersonalDetails.txt", true);
          BufferedWriter bw = new BufferedWriter(fw);
          bw.write(writeLinePers(appno, name, stud) + "\n");
          bw.close();
@@ -122,7 +123,7 @@ public class StudentManager {
     }
     public void updateAcademicDetails(String appno, StudentAcademicDetails studac){
         try {
-         FileWriter fw = new FileWriter(this.filepath + "StudentAcademicDetails.txt");
+         FileWriter fw = new FileWriter("StudentAcademicDetails.txt", true);
          BufferedWriter bw = new BufferedWriter(fw);
          bw.write(writeLineAcad(appno, studac) + "\n");
          bw.close();
@@ -152,5 +153,27 @@ public class StudentManager {
                                         sb.get(1).subName, sb.get(1).obtMarks, sb.get(1).totMarks,
                                         sb.get(2).subName, sb.get(2).obtMarks, sb.get(2).totMarks);
         return sublist;
+    }
+    
+    public ArrayList<SeatAllotmentInfo> getSeatAllotmentInfo(){
+        seatAllotmentInfos = new ArrayList<SeatAllotmentInfo>();
+        try {
+            FileReader fr = new FileReader("SeatAllotmentInfo.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            while(line!=null){
+                //System.out.println(line);
+                String[] row = line.split(",");
+                SeatAllotmentInfo data = new SeatAllotmentInfo(Integer.parseInt(row[0]), row[1], row[2]);
+                seatAllotmentInfos.add(data);
+                line = br.readLine();
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CollegeManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(CollegeManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return seatAllotmentInfos;
     }
 }

@@ -19,7 +19,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
     
     public StudentDetailsUI(String applicationNumber) {
         initComponents();      
-        smgr = new StudentManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
+        smgr = new StudentManager();
         this.applicationNumber = applicationNumber;
         appNo.setText(applicationNumber);
     }
