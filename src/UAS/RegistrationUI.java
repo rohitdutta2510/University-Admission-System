@@ -181,8 +181,12 @@ public class RegistrationUI extends javax.swing.JFrame {
                     if(sMgr.register(acc))
                     {
                         JOptionPane.showMessageDialog(null, "Registration Successful!!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+                        new LoginUI().setVisible(true);
+                        this.dispose();
                     }else{
                         JOptionPane.showMessageDialog(null, "Account already exists", "ERROR", JOptionPane.ERROR_MESSAGE);
+                        new LoginUI().setVisible(true);
+                        this.dispose();
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "Password doesn't match!", "ERROR", JOptionPane.ERROR_MESSAGE);

@@ -1,0 +1,2 @@
+240221, IEM, B.Tech(ME), MSIT, B.Tech(ME), IEM, B.Tech(CSE), IEM, B.Tech(CSE), IEM, B.Tech(CSE), IEM, B.Tech(CSE), IEM, B.Tech(CSE), IEM, B.Tech(CSE)
+240221, IEM, B.Tech(ME), BP Poddar, B.Tech(EE), IEM, B.Tech(CSE), IEM, B.Tech(CSE), IEM, B.Tech(CSE), IEM, B.Tech(CSE), IEM, B.Tech(CSE), IEM, B.Tech(CSE)

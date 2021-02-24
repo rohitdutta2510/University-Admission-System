@@ -20,7 +20,7 @@ public class CollegeManager {
         this.filepath = filepath;        
         this.collegeCourseInfos = new ArrayList<CollegeCourseInfo>();
         this.studChoice = new ArrayList<StudentChoiceDetails>();
-        this.collegeCourses = new ArrayList<CollegeCourse>();
+        this.collegeCourses = new ArrayList<CollegeCourse>();        
     }
     
     private void readCollegeInfo(){
@@ -75,12 +75,13 @@ public class CollegeManager {
     
     public ArrayList<CollegeCourseInfo> getCollegeCourseInfos() {
         this.readCollegeInfo();
-        return collegeCourseInfos;
+        return this.collegeCourseInfos;
     }       
     
     public ArrayList<CollegeCourseInfo> recommendCollegeCourse(int rank){
+        ArrayList<CollegeCourseInfo> xC = this.getCollegeCourseInfos();
         ArrayList<CollegeCourseInfo> recommendations = new ArrayList<CollegeCourseInfo>();
-        for (CollegeCourseInfo collegeCourseInfo : collegeCourseInfos) {
+        for (CollegeCourseInfo collegeCourseInfo : xC) {
             if (rank<=collegeCourseInfo.openingRank) {
                 recommendations.add(collegeCourseInfo);
             }            
@@ -89,7 +90,7 @@ public class CollegeManager {
     }
     
     public void applyForCollege(StudentChoiceDetails choiceDetails){
-        String filepath = "E:\\Works\\Software Engg\\CODE\\University-Admission-System\\studentChoiceDetails.txt";
+        String filepath = "studentChoiceDetails.txt";
         try {
             FileWriter fw = new FileWriter(filepath, true);
             BufferedWriter bw = new BufferedWriter(fw);
