@@ -6,6 +6,12 @@
 package UAS;
 
 import UAS.utils.StudentManager;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,8 +24,10 @@ public class LoginUI extends javax.swing.JFrame {
      * Creates new form LoginUI
      */
     StudentManager studentManager;
+    String allotmentLog;
     public LoginUI() {
-        studentManager = new StudentManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
+        studentManager = new StudentManager();
+        allotmentLog = null;
         initComponents();
     }
 
@@ -99,9 +107,11 @@ public class LoginUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(loginBtn)
                                     .addComponent(applicationNumberTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(passwordField))
+                                    .addComponent(passwordField)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(loginBtn)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
@@ -121,17 +131,13 @@ public class LoginUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(adminPortalBtn)
-                            .addComponent(registerBtn))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(loginBtn)
-                        .addGap(124, 124, 124))))
+                .addGap(18, 18, 18)
+                .addComponent(loginBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adminPortalBtn)
+                    .addComponent(registerBtn))
+                .addGap(0, 96, Short.MAX_VALUE))
         );
 
         pack();
@@ -148,9 +154,26 @@ public class LoginUI extends javax.swing.JFrame {
         String appNo = applicationNumberTextField.getText();
         String password = passwordField.getText();   
         if(studentManager.login(appNo, password)){
+            try {
+                FileReader state = new FileReader("State.txt");
+                BufferedReader brState = new BufferedReader(state);
+                allotmentLog = brState.readLine();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(LoginUI.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+            System.err.println("I/O Exception");
+            }
+            
             JOptionPane.showMessageDialog(null, "Login Successful!!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
-            new StudentDetailsUI(appNo).setVisible(true);
-            this.dispose();
+            if(Integer.parseInt(allotmentLog) == 0){
+                new StudentDetailsUI(appNo).setVisible(true);
+                this.dispose();
+            }
+            else{
+                new SeatAllotmentUI(Integer.parseInt(appNo)).setVisible(true);
+                dispose();
+            }
+            
         }else{
             JOptionPane.showMessageDialog(null, "Incorrect userid or password", "Error!", JOptionPane.ERROR_MESSAGE);   
         }

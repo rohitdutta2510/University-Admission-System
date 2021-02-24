@@ -14,10 +14,9 @@ public class CollegeManager {
     private ArrayList<CollegeCourseInfo> collegeCourseInfos;
     private ArrayList<StudentChoiceDetails> studChoice;
     private ArrayList<CollegeCourse> collegeCourses;
-    private String filepath;
+    //private String filepath;
 
-    public CollegeManager(String filepath) {
-        this.filepath = filepath;        
+    public CollegeManager() {       
         this.collegeCourseInfos = new ArrayList<CollegeCourseInfo>();
         this.studChoice = new ArrayList<StudentChoiceDetails>();
         this.collegeCourses = new ArrayList<CollegeCourse>();        
@@ -25,7 +24,7 @@ public class CollegeManager {
     
     private void readCollegeInfo(){
         try {
-            FileReader fr = new FileReader(this.filepath + "collegedata.txt");
+            FileReader fr = new FileReader("CollegeData.txt");
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while(line!=null){
@@ -45,7 +44,7 @@ public class CollegeManager {
     
     private void readStudChoice(){
         try {
-            FileReader fr = new FileReader(this.filepath + "studentchoice.txt");
+            FileReader fr = new FileReader("StudentChoiceDetails.txt");
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while(line!=null){
@@ -90,12 +89,11 @@ public class CollegeManager {
     }
     
     public void applyForCollege(StudentChoiceDetails choiceDetails){
-        String filepath = "studentChoiceDetails.txt";
+        String filepath = "StudentChoiceDetails.txt";
         try {
             FileWriter fw = new FileWriter(filepath, true);
             BufferedWriter bw = new BufferedWriter(fw);
-            String data = choiceDetails.appNo + ", ";
-            String rank = choiceDetails.rank + ", ";
+            String data = choiceDetails.appNo + ", " + choiceDetails.rank + ", ";
             for (CollegeCourse choice : choiceDetails.choices) {
                 data = data + choice.cllgName + ", " + choice.courseName + ", ";
             }                      

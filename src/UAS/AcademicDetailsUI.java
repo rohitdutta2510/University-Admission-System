@@ -21,7 +21,7 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
     public AcademicDetailsUI(String appNo) {
         initComponents();
         this.appNo = appNo;
-        smgr = new StudentManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
+        smgr = new StudentManager();
         sbList[0] = new Subject("Physics", "XX", "XX");
         sbList[1] = new Subject("Chemistry", "XX", "XX");
         sbList[2] = new Subject("Maths", "XX", "XX");

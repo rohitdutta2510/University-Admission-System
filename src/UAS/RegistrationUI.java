@@ -24,7 +24,7 @@ public class RegistrationUI extends javax.swing.JFrame {
     
     public RegistrationUI() {
         initComponents();
-        sMgr = new StudentManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
+        sMgr = new StudentManager();
         String appNo = sMgr.applicationNumberGenerator();
         applicationNumberLabel.setText(appNo);
     }
