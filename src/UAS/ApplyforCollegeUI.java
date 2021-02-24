@@ -32,7 +32,8 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         this.rank = rank;
         this.selectedFromRecc = selectedFromRecc;
         
-        mgr = new CollegeManager("D:\\University Admission System\\University-Admission-System\\");
+        mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
+
         ArrayList<CollegeCourseInfo> collegeCourseInfos = mgr.getCollegeCourseInfos();
 
         String[] colleges = new String[collegeCourseInfos.size()];
