@@ -90,7 +90,7 @@ public class CollegeManager {
     }
     
     public void applyForCollege(StudentChoiceDetails choiceDetails){
-        String filepath = "D:\\University Admission System\\University-Admission-System\\studentChoiceDetails.txt";
+        String filepath = "studentChoiceDetails.txt";
         try {
             FileWriter fw = new FileWriter(filepath, true);
             BufferedWriter bw = new BufferedWriter(fw);
