@@ -16,6 +16,6 @@ import UAS.utils.StudentManager;
 
 public class Main {
     public static void main(String[] args) {
-        new LoginUI().setVisible(true);               
+        new ViewRecommendedCollegesUI(5000,"240221").setVisible(true);               
     }
 }

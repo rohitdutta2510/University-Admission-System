@@ -33,6 +33,7 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         this.selectedFromRecc = selectedFromRecc;
         
         mgr = new CollegeManager("E:\\Works\\Software Engg\\CODE\\University-Admission-System\\");
+
         ArrayList<CollegeCourseInfo> collegeCourseInfos = mgr.getCollegeCourseInfos();
 
         String[] colleges = new String[collegeCourseInfos.size()];
@@ -41,7 +42,7 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         for (int i = 0; i < collegeCourseInfos.size(); i++) {
             colleges[i] = collegeCourseInfos.get(i).collegeName;
             courses[i] = collegeCourseInfos.get(i).courseName;
-            System.out.println("College Name: " + colleges[i] + ", " + "Course Name: " + courses[i]);
+            //System.out.println("College Name: " + colleges[i] + ", " + "Course Name: " + courses[i]);
         }        
         
         initComponents();
@@ -67,35 +68,36 @@ public class ApplyforCollegeUI extends javax.swing.JFrame {
         stream7ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));
         stream8ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(courses));      
         
-        int size = this.selectedFromRecc.size();
+        int size = selectedFromRecc.size();
+        System.out.println(selectedFromRecc.get(0).courseName);
         switch(size){
             case 1:
-                college1ComboBox.setSelectedItem(this.selectedFromRecc.get(0).cllgName);
-                stream1ComboBox.setSelectedItem(this.selectedFromRecc.get(0).courseName);
+                college1ComboBox.setSelectedItem(selectedFromRecc.get(0).cllgName);
+                stream1ComboBox.setSelectedItem(selectedFromRecc.get(0).courseName);
                 break;
             case 2:
-                college1ComboBox.setSelectedItem(this.selectedFromRecc.get(0).cllgName);
-                stream1ComboBox.setSelectedItem(this.selectedFromRecc.get(0).courseName);
-                college2ComboBox.setSelectedItem(this.selectedFromRecc.get(1).cllgName);
-                stream2ComboBox.setSelectedItem(this.selectedFromRecc.get(1).courseName);
+                college1ComboBox.setSelectedItem(selectedFromRecc.get(0).cllgName);
+                stream1ComboBox.setSelectedItem(selectedFromRecc.get(0).courseName);
+                college2ComboBox.setSelectedItem(selectedFromRecc.get(1).cllgName);
+                stream2ComboBox.setSelectedItem(selectedFromRecc.get(1).courseName);
                 break;
             case 3:
-                college1ComboBox.setSelectedItem(this.selectedFromRecc.get(0).cllgName);
-                stream1ComboBox.setSelectedItem(this.selectedFromRecc.get(0).courseName);
-                college2ComboBox.setSelectedItem(this.selectedFromRecc.get(1).cllgName);
-                stream2ComboBox.setSelectedItem(this.selectedFromRecc.get(1).courseName);
-                college3ComboBox.setSelectedItem(this.selectedFromRecc.get(2).cllgName);
-                stream3ComboBox.setSelectedItem(this.selectedFromRecc.get(2).courseName);
+                college1ComboBox.setSelectedItem(selectedFromRecc.get(0).cllgName);
+                stream1ComboBox.setSelectedItem(selectedFromRecc.get(0).courseName);
+                college2ComboBox.setSelectedItem(selectedFromRecc.get(1).cllgName);
+                stream2ComboBox.setSelectedItem(selectedFromRecc.get(1).courseName);
+                college3ComboBox.setSelectedItem(selectedFromRecc.get(2).cllgName);
+                stream3ComboBox.setSelectedItem(selectedFromRecc.get(2).courseName);
                 break;
             case 4:
-                college1ComboBox.setSelectedItem(this.selectedFromRecc.get(0).cllgName);
-                stream1ComboBox.setSelectedItem(this.selectedFromRecc.get(0).courseName);
-                college2ComboBox.setSelectedItem(this.selectedFromRecc.get(1).cllgName);
-                stream2ComboBox.setSelectedItem(this.selectedFromRecc.get(1).courseName);
-                college3ComboBox.setSelectedItem(this.selectedFromRecc.get(2).cllgName);
-                stream3ComboBox.setSelectedItem(this.selectedFromRecc.get(2).courseName);   
-                college4ComboBox.setSelectedItem(this.selectedFromRecc.get(3).cllgName);
-                stream4ComboBox.setSelectedItem(this.selectedFromRecc.get(3).courseName);                
+                college1ComboBox.setSelectedItem(selectedFromRecc.get(0).cllgName);
+                stream1ComboBox.setSelectedItem(selectedFromRecc.get(0).courseName);
+                college2ComboBox.setSelectedItem(selectedFromRecc.get(1).cllgName);
+                stream2ComboBox.setSelectedItem(selectedFromRecc.get(1).courseName);
+                college3ComboBox.setSelectedItem(selectedFromRecc.get(2).cllgName);
+                stream3ComboBox.setSelectedItem(selectedFromRecc.get(2).courseName);   
+                college4ComboBox.setSelectedItem(selectedFromRecc.get(3).cllgName);
+                stream4ComboBox.setSelectedItem(selectedFromRecc.get(3).courseName);                
             default:
                 break;        
         }
