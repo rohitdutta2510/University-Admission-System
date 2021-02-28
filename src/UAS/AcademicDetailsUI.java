@@ -273,11 +273,15 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
 
     
     private void storeData(){
-        String rank = examRankTextField.getText();
+        String rankStr = examRankTextField.getText();
         String class10Sc = class10School.getText();
         String marks10 = class10Marks.getText();
         String boards10 = class10Boards.getText();
-        this.rank = Integer.parseInt(rank);
+        if(rankStr.chars().allMatch(Character::isDigit)){
+           this.rank = Integer.parseInt(rankStr);
+        }else{
+            JOptionPane.showMessageDialog(null, "Numeric field text not allowed", "Error!", JOptionPane.ERROR_MESSAGE);                                
+        }
         String class12Sc = class12School.getText();
         String marks12 = class12Marks.getText();
         String boards12 = class12Boards.getText();
@@ -295,29 +299,43 @@ public class AcademicDetailsUI extends javax.swing.JFrame {
         sbList[3].totMarks = subject4TotalMarks.getText();
         
         
-        if (rank.isBlank() && class10Sc.isBlank() && marks10.isBlank() && boards10.isBlank() &&
+        if (rankStr.isBlank() && class10Sc.isBlank() && marks10.isBlank() && boards10.isBlank() &&
                 class12Sc.isBlank() && marks12.isBlank() && boards12.isBlank() && sbList[0].obtMarks.isBlank() &&
                                                 sbList[0].totMarks.isBlank() && sbList[1].obtMarks.isBlank() &&
                                                 sbList[1].totMarks.isBlank() && sbList[2].obtMarks.isBlank() &&
                                                 sbList[2].totMarks.isBlank()&& sbList[3].obtMarks.isBlank() &&
                                                 sbList[3].totMarks.isBlank()) {
             JOptionPane.showMessageDialog(null, "All the fields are mandatory !!");
-        }else{
-            sad = new StudentAcademicDetails(rank, class10Sc, boards10, marks10, class12Sc, boards10, marks12, sbList);
-            smgr.updateAcademicDetails("application number", sad);
-
-           
-            dispose();
-            
+        }else{        
+            if(!subjectMarksisNum(0) || !subjectMarksisNum(1) || !subjectMarksisNum(2) || !subjectMarksisNum(3) || !subjectTotalMarksisNum(0) || !subjectTotalMarksisNum(1) || !subjectTotalMarksisNum(2) || !subjectTotalMarksisNum(3) || !marks10.chars().allMatch(Character :: isDigit) || !marks12.chars().allMatch(Character :: isDigit)){
+                JOptionPane.showMessageDialog(null, "Numeric field text not allowed", "Error!", JOptionPane.ERROR_MESSAGE);                                
+            }else{
+                sad = new StudentAcademicDetails(rankStr, class10Sc, boards10, marks10, class12Sc, boards10, marks12, sbList);
+                smgr.updateAcademicDetails("application number", sad);           
+                new ViewRecommendedCollegesUI(this.rank, this.appNo).setVisible(true);
+                dispose();            
+            }
         }
     }    
     
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-        this.storeData();
-        new ViewRecommendedCollegesUI(this.rank, this.appNo).setVisible(true);
+        this.storeData();        
     }//GEN-LAST:event_submitBtnActionPerformed
     
+    private boolean subjectMarksisNum(int index){
+        if(sbList[index].obtMarks.chars().allMatch(Character::isDigit)){
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean subjectTotalMarksisNum(int index){
+        if(sbList[index].totMarks.chars().allMatch(Character::isDigit)){
+            return true;
+        }
+        return false;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField class10Boards;

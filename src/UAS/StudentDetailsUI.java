@@ -43,17 +43,22 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         if (name.isEmpty() && dob.isEmpty() && fName.isEmpty() && mName.isEmpty() && presentAddress.isEmpty() 
                 && permanentAddress.isEmpty() && aadharNo.isEmpty() && phnNo.isEmpty() && email.isEmpty() && 
                 gPhnNo.isEmpty() && gemail.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "All the fields are mandatory !!");
-        }else{
-            if(jCheckBox1.isSelected()){
-                spd = new StudentPersonalDetails(dob, fName, mName, presentAddress,
-                permanentAddress, aadharNo, phnNo, gPhnNo, email, pDisabled);
-                smgr.updatePersonalDetails(this.applicationNumber, name, spd);
-                
-                new AcademicDetailsUI(applicationNumber).setVisible(true);
-                dispose();
+            JOptionPane.showMessageDialog(null, "All the fields are mandatory !!", "Error!", JOptionPane.ERROR_MESSAGE);
+        }else{   
+            if(!dob.matches("^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$")){                
+                JOptionPane.showMessageDialog(null, "Date of Birth not entered properly", "Error!", JOptionPane.ERROR_MESSAGE);                
+            }else if (!(aadharNo.chars().allMatch(Character::isDigit)) || !(phnNo.chars().allMatch(Character::isDigit)) || !(gPhnNo.chars().allMatch(Character::isDigit))) {
+                JOptionPane.showMessageDialog(null, "Numeric field text not allowed", "Error!", JOptionPane.ERROR_MESSAGE);                
             }else{
-                JOptionPane.showMessageDialog(null, "Check the box", "Error!", JOptionPane.ERROR_MESSAGE);
+                if(jCheckBox1.isSelected()){
+                    spd = new StudentPersonalDetails(dob, fName, mName, presentAddress,
+                    permanentAddress, aadharNo, phnNo, gPhnNo, email, pDisabled);
+                    smgr.updatePersonalDetails(this.applicationNumber, name, spd);
+                    new AcademicDetailsUI(applicationNumber).setVisible(true);
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Check the box", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }
@@ -77,7 +82,6 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         permanentAddressTextField = new javax.swing.JTextArea();
-        image = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         appNo = new javax.swing.JLabel();
@@ -87,7 +91,6 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         studentNameTextField = new javax.swing.JTextField();
         dobTextField = new javax.swing.JTextField();
-        uploadImageBtn = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -125,8 +128,6 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         permanentAddressTextField.setRows(5);
         jScrollPane2.setViewportView(permanentAddressTextField);
 
-        image.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Student Details");
 
@@ -140,18 +141,13 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         jLabel4.setText("Name:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel5.setText("Date of Birth(dd/mm/yyyy):");
+        jLabel5.setText("Date of Birth(dd-mm-yyyy):");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel6.setText("Father's Name:");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel7.setText("Mother's Name:");
-
-        uploadImageBtn.setBackground(new java.awt.Color(51, 153, 255));
-        uploadImageBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        uploadImageBtn.setText("Upload Image");
-        uploadImageBtn.setToolTipText("");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel11.setText("Aadhar Number:");
@@ -215,20 +211,14 @@ public class StudentDetailsUI extends javax.swing.JFrame {
                                 .addGap(222, 222, 222)
                                 .addComponent(jLabel1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(75, 75, 75)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel9)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(47, 47, 47)
-                                        .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(75, 75, 75)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(uploadImageBtn)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(71, 71, 71)
@@ -284,13 +274,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(uploadImageBtn)))
-                .addGap(26, 26, 26)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(aadharNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -354,7 +338,6 @@ public class StudentDetailsUI extends javax.swing.JFrame {
     private javax.swing.JTextField fatherNameTextField;
     private javax.swing.JTextField guardianEmailTextField;
     private javax.swing.JTextField guardianPhnTextField;
-    private javax.swing.JLabel image;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -381,6 +364,5 @@ public class StudentDetailsUI extends javax.swing.JFrame {
     private javax.swing.JTextArea presentAddressTextField;
     private javax.swing.JTextField studentNameTextField;
     private javax.swing.JButton submitBtn;
-    private javax.swing.JButton uploadImageBtn;
     // End of variables declaration//GEN-END:variables
 }
