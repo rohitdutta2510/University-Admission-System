@@ -11,11 +11,9 @@
  */
 
 import UAS.*;
-import UAS.utils.StudentAccountInfo;
-import UAS.utils.StudentManager;
 
 public class Main {
     public static void main(String[] args) {
-        new ViewRecommendedCollegesUI(5000,"240221").setVisible(true);               
+        new LoginUI().setVisible(true);
     }
 }
