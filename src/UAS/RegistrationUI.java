@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author THUNDER
+ * @author Samiruddin Thunder
  */
 public class RegistrationUI extends javax.swing.JFrame {
 
