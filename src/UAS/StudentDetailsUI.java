@@ -8,21 +8,20 @@
  * @author Rohit Dutta
  */
 package UAS;
-
 import javax.swing.JOptionPane;
 import UAS.utils.StudentManager;
 import UAS.utils.StudentPersonalDetails;
-
 
 public class StudentDetailsUI extends javax.swing.JFrame {
     
     private StudentManager smgr;
     private StudentPersonalDetails spd;
 
-    private String applicationNumber;
+    private String applicationNumber;    
     
-    public StudentDetailsUI(String applicationNumber) {
-        initComponents();      
+    public StudentDetailsUI(String applicationNumber) {        
+        
+        initComponents();              
         smgr = new StudentManager();
         this.applicationNumber = applicationNumber;
         appNo.setText(applicationNumber);
@@ -31,7 +30,9 @@ public class StudentDetailsUI extends javax.swing.JFrame {
 
     private void storeData(){                
         String name = studentNameTextField.getText();
-        String dob = dobTextField.getText();
+        //get dob data        
+        String dob = datePicker.getFormattedTextField().getText();
+        
         String fName = fatherNameTextField.getText();
         String mName = motherNameField.getText();
         String presentAddress = presentAddressTextField.getText();
@@ -49,12 +50,10 @@ public class StudentDetailsUI extends javax.swing.JFrame {
                 gPhnNo.isEmpty() && gemail.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All the fields are mandatory !!", "Error!", JOptionPane.ERROR_MESSAGE);
         }else{   
-            if(!dob.matches("^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$")){                
-                JOptionPane.showMessageDialog(null, "Date of Birth not entered properly", "Error!", JOptionPane.ERROR_MESSAGE);                
-            }else if (!(aadharNo.chars().allMatch(Character::isDigit)) || !(phnNo.chars().allMatch(Character::isDigit)) || !(gPhnNo.chars().allMatch(Character::isDigit))) {
+            if (!(aadharNo.chars().allMatch(Character::isDigit)) || !(phnNo.chars().allMatch(Character::isDigit)) || !(gPhnNo.chars().allMatch(Character::isDigit))) {
                 JOptionPane.showMessageDialog(null, "Numeric field text not allowed", "Error!", JOptionPane.ERROR_MESSAGE);                
             }else{
-                if(jCheckBox1.isSelected()){
+                if(jCheckBox1.isSelected()){                    
                     spd = new StudentPersonalDetails(dob, fName, mName, presentAddress,
                     permanentAddress, aadharNo, phnNo, gPhnNo, email, pDisabled);
                     smgr.updatePersonalDetails(this.applicationNumber, name, spd);
@@ -76,6 +75,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dateLabelFormatter1 = new org.jdatepicker.DateLabelFormatter();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         fatherNameTextField = new javax.swing.JTextField();
@@ -94,7 +94,6 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         studentNameTextField = new javax.swing.JTextField();
-        dobTextField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -109,6 +108,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         emailTextField = new javax.swing.JTextField();
         guardianPhnTextField = new javax.swing.JTextField();
         guardianEmailTextField = new javax.swing.JTextField();
+        datePicker = new org.jdatepicker.JDatePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UpdateProfile");
@@ -190,7 +190,8 @@ public class StudentDetailsUI extends javax.swing.JFrame {
                                 .addGap(43, 43, 43)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dobTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(189, 189, 189))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +221,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -259,10 +260,10 @@ public class StudentDetailsUI extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(studentNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(dobTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(fatherNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -337,7 +338,8 @@ public class StudentDetailsUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aadharNumberTextField;
     private javax.swing.JLabel appNo;
-    private javax.swing.JTextField dobTextField;
+    private org.jdatepicker.DateLabelFormatter dateLabelFormatter1;
+    private org.jdatepicker.JDatePicker datePicker;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JTextField fatherNameTextField;
     private javax.swing.JTextField guardianEmailTextField;
