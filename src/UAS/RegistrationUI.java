@@ -21,12 +21,12 @@ public class RegistrationUI extends javax.swing.JFrame {
      */
     
     StudentManager sMgr;
+    String appNo;
     
     public RegistrationUI() {
         initComponents();
         sMgr = new StudentManager();
-        String appNo = sMgr.applicationNumberGenerator();
-        applicationNumberLabel.setText(appNo);
+        appNo = sMgr.applicationNumberGenerator();        
     }
 
     /**
@@ -39,8 +39,6 @@ public class RegistrationUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        applicationNumberLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -56,10 +54,6 @@ public class RegistrationUI extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Registration");
-
-        jLabel2.setText("Application Number:");
-
-        applicationNumberLabel.setText("21323432445");
 
         jLabel4.setText("Name");
 
@@ -97,13 +91,9 @@ public class RegistrationUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addGap(26, 26, 26))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addGap(105, 105, 105)))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addGap(105, 105, 105))
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel6)
                                             .addGap(87, 87, 87)))
@@ -111,7 +101,6 @@ public class RegistrationUI extends javax.swing.JFrame {
                                         .addComponent(jLabel7)
                                         .addGap(40, 40, 40)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(applicationNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(emailIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                                     .addComponent(nameTextField)
                                     .addComponent(passwordField)
@@ -130,11 +119,7 @@ public class RegistrationUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(applicationNumberLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -152,9 +137,9 @@ public class RegistrationUI extends javax.swing.JFrame {
                     .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(confirmBtn)
-                .addGap(21, 21, 21))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -167,11 +152,12 @@ public class RegistrationUI extends javax.swing.JFrame {
 
      private void confirm() {        
         System.out.println("Confirm Button Pressed");        
-        String appNo = applicationNumberLabel.getText();
+        //String appNo = applicationNumberLabel.getText();
         String name = nameTextField.getText();
         String email = emailIdTextField.getText();
         String password = passwordField.getText();        
         String confirmPassword = confirmPasswordField.getText();
+        String confirmationString = "Registration Successful!\nApplication Number: " + appNo;
         if(name.isEmpty() && email.isEmpty() && password.isEmpty() && confirmPassword.isEmpty()){
             JOptionPane.showMessageDialog(null, "Empty fields present", "ERROR", JOptionPane.ERROR_MESSAGE);                        
         }else{
@@ -180,7 +166,7 @@ public class RegistrationUI extends javax.swing.JFrame {
                     StudentAccountInfo acc = new StudentAccountInfo(name, email, password, appNo);
                     if(sMgr.register(acc))
                     {
-                        JOptionPane.showMessageDialog(null, "Registration Successful!!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, confirmationString, "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
                         new LoginUI().setVisible(true);
                         this.dispose();
                     }else{
@@ -199,13 +185,11 @@ public class RegistrationUI extends javax.swing.JFrame {
          
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel applicationNumberLabel;
     private javax.swing.JButton confirmBtn;
     private javax.swing.JTextField confirmPasswordField;
     private javax.swing.JTextField emailIdTextField;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
