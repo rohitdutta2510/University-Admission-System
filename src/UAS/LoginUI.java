@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author THUNDER
+ * @author Samiruddin Thunder
  */
 public class LoginUI extends javax.swing.JFrame {
 

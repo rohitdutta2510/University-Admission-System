@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+/**
+ *
+ * @author Sachin Agarwal
+ */
 package UAS;
 import UAS.*;
 import UAS.utils.CollegeCourseInfo;

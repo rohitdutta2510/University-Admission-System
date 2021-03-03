@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author seals
+ * @author Samiruddin Thunder
  */
 public class ApplyforCollegeUI extends javax.swing.JFrame {
 

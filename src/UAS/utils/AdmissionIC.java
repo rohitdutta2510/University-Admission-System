@@ -1,3 +1,7 @@
+/**
+ *
+ * @author Samiruddin Thunder
+ */
 package UAS.utils;
 
 public class AdmissionIC {

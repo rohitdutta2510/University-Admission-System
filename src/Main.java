@@ -7,7 +7,7 @@
 
 /**
  *
- * @author THUNDER
+ * @author Samiruddin Thunder
  */
 
 import UAS.*;

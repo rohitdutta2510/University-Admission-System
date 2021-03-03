@@ -1,3 +1,7 @@
+/**
+ *
+ * @author Rohit Dutta
+ */
 package UAS.utils;
 
 public class SeatAllotmentInfo {

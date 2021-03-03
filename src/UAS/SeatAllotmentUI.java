@@ -1,3 +1,7 @@
+/**
+ *
+ * @author Rohit Dutta
+ */
 package UAS;
 import UAS.utils.StudentManager;
 import UAS.utils.SeatAllotmentInfo;
@@ -103,7 +107,7 @@ public class SeatAllotmentUI extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(collegeName, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(streamName, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
