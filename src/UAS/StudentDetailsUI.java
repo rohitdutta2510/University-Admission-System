@@ -145,7 +145,7 @@ public class StudentDetailsUI extends javax.swing.JFrame {
         jLabel4.setText("Name:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel5.setText("Date of Birth(dd-mm-yyyy):");
+        jLabel5.setText("Date of Birth:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel6.setText("Father's Name:");
